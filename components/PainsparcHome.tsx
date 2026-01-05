@@ -296,14 +296,74 @@ export default function PainsparcHome() {
         </motion.div>
       </section>
 
-      {/* 4. FOOTER - Fixed Mobile Alignment */}
+      {/* 4. ABOUT US SECTION - Vertical Left Hierarchy */}
+      <section className="relative z-10 bg-white dark:bg-black px-4 md:px-8 pb-32">
+        <motion.div 
+            initial={{ opacity: 0 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true }}
+            className="max-w-6xl mx-auto border-t border-zinc-100 dark:border-zinc-800 pt-12"
+        >
+          {/* Title Row */}
+          <div className="mb-12">
+            <span className="block font-mono text-xs text-zinc-400 uppercase tracking-widest mb-3">About Us</span>
+            <h3 className="text-3xl font-bold text-zinc-900 dark:text-white tracking-tight">The Architects</h3>
+          </div>
+
+          {/* Flexible People Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+            
+            {/* Person 01: You */}
+            <div className="flex flex-col items-start">
+              {/* Photo Below Title */}
+              <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-zinc-100 dark:border-zinc-800 shadow-sm mb-6 bg-zinc-50 dark:bg-zinc-900">
+                <Image 
+                  src="/my-photo.png" 
+                  alt="Painsparc Founder" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+              {/* Identity Details */}
+              <div className="space-y-1">
+                <h4 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tighter">
+                  Pushkar Wagh
+                </h4>
+                <p className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest pb-4">
+                  Founder & Systems Architect
+                </p>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-[280px]">
+                  
+                </p>
+              </div>
+            </div>
+
+            {/* Person 02: (Placeholder for next employee) */}
+            <div className="flex flex-col items-start opacity-40 hover:opacity-100 transition-opacity duration-500">
+              <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-zinc-100 dark:border-zinc-800 shadow-sm mb-6 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center">
+                 <span className="text-[10px] font-mono text-zinc-300 dark:text-zinc-700">NODE_PENDING</span>
+              </div>
+              <div className="space-y-1">
+                <h4 className="text-2xl font-bold text-zinc-300 dark:text-zinc-700 uppercase tracking-tighter">
+                  System_02
+                </h4>
+                <p className="text-[10px] font-mono text-zinc-200 dark:text-zinc-800 uppercase tracking-widest pb-4">
+                  Upcoming Integration
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </motion.div>
+      </section>
+
+      {/* 5. FOOTER */}
       <footer className="relative z-10 bg-zinc-50 dark:bg-zinc-900 pt-20 pb-40 px-4 md:px-8 border-t border-zinc-100 dark:border-zinc-800">
-        {/* Changed items-end to items-start for mobile, md:items-end for desktop */}
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end">
           
           <div className="text-left">
             <h2 className="text-4xl md:text-6xl font-bold text-zinc-900 dark:text-white tracking-tighter mb-8 max-w-2xl leading-tight">
-              Oh, let us impress you. <br/>
+              Oh well, let us impress you. <br/>
               Ready to initiate?
             </h2>
             <Link 
@@ -314,7 +374,6 @@ export default function PainsparcHome() {
             </Link>
           </div>
 
-          {/* Added text-left for mobile, md:text-right for desktop */}
           <div className="mt-16 md:mt-0 text-left md:text-right">
             <p className="text-zinc-400 text-sm leading-relaxed">
               © 2026 The Painsparc Company Pvt. Ltd. <br/> 
