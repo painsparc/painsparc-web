@@ -21,10 +21,14 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "Painsparc",
   description: "Architecting logic for the digital void.",
-  // FIXED: Added icons metadata to link your cursive P
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
+  },
+
+  // ✅ ADD THIS BLOCK
+  other: {
+    "google-site-verification": "CajgTtGmrgClojLZp2FQqQZZmoSZpK-7r1m36YqHD3A",
   },
 };
 
