@@ -62,14 +62,14 @@ export default function PainsparcHome() {
     >
       
       {/* 1. HERO SECTION */}
-      <section className="relative h-[90vh] flex flex-col px-4 md:px-8">
+      {/* UPDATED: Changed from fixed height to min-h to allow stacking on mobile */}
+      <section className="relative min-h-[90vh] md:h-[90vh] flex flex-col px-4 md:px-8">
         
         {/* Header */}
         <header className="flex justify-between items-center py-6 relative z-30">
           <div className="text-3xl text-zinc-900 dark:text-white font-header pt-2 select-none">
             Painsparc's
           </div>
-          {/* FIXED: Changed from <a> to <Link> pointing to /contact */}
           <Link 
             href="/contact" 
             className="text-sm font-medium text-zinc-500 hover:text-black dark:hover:text-white transition-colors"
@@ -78,30 +78,37 @@ export default function PainsparcHome() {
           </Link>
         </header>
 
-        {/* --- THE TREE CONTAINER --- */}
-        <div className="absolute top-0 right-0 h-full w-full md:w-[50%] z-0 opacity-100 flex items-end justify-center pb-0">
-           <Tree />
+        {/* --- HERO CONTENT WRAPPER --- */}
+        <div className="flex-1 flex flex-col md:block relative">
+            
+            {/* Center Text */}
+            {/* UPDATED: Mobile: Relative block with padding. Desktop: Absolute centered. */}
+            <div className="relative z-10 pt-20 pb-10 md:py-0 md:absolute md:top-0 md:left-0 md:h-full flex flex-col justify-center max-w-6xl pointer-events-none">
+                <motion.div style={{ y: textY, opacity }} className="pointer-events-auto text-left">
+                    <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tighter leading-[1.1] mb-8">
+                    Certainly, we have it <br/>
+                    <span className="text-zinc-400">That what you need.</span>
+                    </h1>
+                    <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-xl leading-relaxed">
+                    The things are built the way they're supposed to be, durable, scalable and perhaps, beautiful.
+                    </p>
+                </motion.div>
+            </div>
+
+            {/* --- THE TREE CONTAINER --- */}
+            {/* UPDATED: Mobile: Relative block below text. Desktop: Absolute right. */}
+            <div className="relative w-full h-[50vh] md:absolute md:top-0 md:right-0 md:h-full md:w-[50%] z-0 opacity-100 flex items-end justify-center pb-0">
+                 <Tree />
+            </div>
+
         </div>
 
-        {/* Center Text */}
-        <div className="flex-1 flex flex-col justify-center max-w-6xl relative z-10">
-          <motion.div style={{ y: textY, opacity }}>
-            <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tighter leading-[1.1] mb-8">
-              Certainly, we have it <br/>
-              <span className="text-zinc-400">That what you need.</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-xl leading-relaxed">
-              The things are built the way they're supposed to be, durable, scalable and perhaps, beautiful.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Hidden on very small screens to avoid overlap */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-4 md:left-8 flex items-center gap-4 z-20"
+          className="hidden md:flex absolute bottom-10 left-4 md:left-8 items-center gap-4 z-20"
         >
           <div className="h-[1px] w-12 bg-zinc-300 dark:bg-zinc-700" />
           <span className="text-xs font-mono uppercase text-zinc-400 tracking-widest">
@@ -147,12 +154,13 @@ export default function PainsparcHome() {
                 {/* --- ABSOLUTE ELEMENTS --- */}
                 
                 {/* 1. ARROW (Bottom RIGHT) */}
-                <div className="absolute bottom-8 right-8 z-30 bg-black dark:bg-white p-3 rounded-full opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
+                <div className="absolute bottom-8 right-8 z-30 bg-black dark:bg-white p-3 rounded-full opacity-100 md:opacity-0 -translate-x-0 -translate-y-0 md:-translate-x-2 md:translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
                     <ArrowUpRight size={20} className="text-white dark:text-black" />
                 </div>
 
                 {/* 2. LOGO (Top Right) */}
-                <div className="absolute top-6 right-12 z-20 w-[120px] h-[120px] rounded-3xl overflow-hidden shadow-sm border border-zinc-100 dark:border-zinc-700 bg-white">
+                {/* UPDATED: Adjusted size for mobile (w-20) vs desktop (w-[120px]) */}
+                <div className="absolute top-6 right-6 md:right-12 z-20 w-20 h-20 md:w-[120px] md:h-[120px] rounded-2xl md:rounded-3xl overflow-hidden shadow-sm border border-zinc-100 dark:border-zinc-700 bg-white">
                     <Image 
                         src="/logos/orbit.png" 
                         alt="Orbit Logo" 
@@ -162,7 +170,7 @@ export default function PainsparcHome() {
                 </div>
                 
                 {/* --- TEXT CONTENT --- */}
-                <div className="absolute top-0 left-0 w-full h-full p-8 flex flex-col items-start z-10 pointer-events-none">
+                <div className="absolute top-0 left-0 w-full h-full p-6 md:p-8 flex flex-col items-start z-10 pointer-events-none">
                   <span className="block font-sans text-xs font-bold tracking-widest uppercase text-zinc-400 dark:text-zinc-500 mb-2">
                     System 01
                   </span>
@@ -170,11 +178,11 @@ export default function PainsparcHome() {
                   <h2 className="text-4xl md:text-5xl font-bold text-zinc-800 dark:text-white tracking-tighter">
                     Orbit
                   </h2>
-                  <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-2 max-w-xs font-medium leading-relaxed">
+                  <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-2 max-w-[200px] md:max-w-xs font-medium leading-relaxed">
                     Welcome to the next generation of education management.
                   </p>
 
-                  <ul className="mt-10 space-y-4">
+                  <ul className="mt-8 md:mt-10 space-y-3 md:space-y-4">
                     <li className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-600 flex items-center gap-2">
                       <span className="w-1 h-1 bg-zinc-400 rounded-full" /> Automatic Unlimited Test Gen
                     </li>
@@ -210,12 +218,13 @@ export default function PainsparcHome() {
                 {/* --- ABSOLUTE ELEMENTS --- */}
 
                 {/* 1. ARROW (Bottom RIGHT) */}
-                <div className="absolute bottom-8 right-8 z-30 bg-white dark:bg-black p-3 rounded-full opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
+                <div className="absolute bottom-8 right-8 z-30 bg-white dark:bg-black p-3 rounded-full opacity-100 md:opacity-0 -translate-x-0 -translate-y-0 md:-translate-x-2 md:translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
                     <ArrowUpRight size={20} className="text-black dark:text-white" />
                 </div>
 
                 {/* 2. LOGO */}
-                <div className="absolute top-6 right-12 z-20 w-[120px] h-[120px] rounded-3xl overflow-hidden shadow-sm border border-zinc-700 dark:border-zinc-300 bg-black dark:bg-white">
+                {/* UPDATED: Adjusted size for mobile (w-20) vs desktop (w-[120px]) */}
+                <div className="absolute top-6 right-6 md:right-12 z-20 w-20 h-20 md:w-[120px] md:h-[120px] rounded-2xl md:rounded-3xl overflow-hidden shadow-sm border border-zinc-700 dark:border-zinc-300 bg-black dark:bg-white">
                     <Image 
                         src="/logos/peak.png" 
                         alt="Peak Logo" 
@@ -225,7 +234,7 @@ export default function PainsparcHome() {
                 </div>
 
                  {/* --- TEXT CONTENT --- */}
-                <div className="absolute top-0 left-0 w-full h-full p-8 flex flex-col items-start z-10 pointer-events-none">
+                <div className="absolute top-0 left-0 w-full h-full p-6 md:p-8 flex flex-col items-start z-10 pointer-events-none">
                     <span className="block font-sans text-xs font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-400 mb-2">
                       System 02
                     </span>
@@ -233,11 +242,11 @@ export default function PainsparcHome() {
                   <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-black tracking-tighter">
                     Peak
                   </h2>
-                  <p className="text-zinc-400 dark:text-zinc-600 text-sm mt-2 max-w-xs font-medium leading-relaxed">
+                  <p className="text-zinc-400 dark:text-zinc-600 text-sm mt-2 max-w-[200px] md:max-w-xs font-medium leading-relaxed">
                     Ascend to your highest potential. <br/> A CRM designed for speed.
                   </p>
 
-                   <ul className="mt-10 space-y-4">
+                   <ul className="mt-8 md:mt-10 space-y-3 md:space-y-4">
                     <li className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-400 flex items-center gap-2">
                       <span className="w-1 h-1 bg-zinc-600 rounded-full" /> Dual-Engine Performance
                     </li>
