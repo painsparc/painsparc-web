@@ -88,7 +88,7 @@ export default function PainsparcHome() {
                     <span className="text-zinc-400">That what you need.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-xl leading-relaxed">
-                    The things are built the way they're supposed to be, durable, scalable and perhaps, beautiful.
+                    The things are built the way they're supposed to be, durable, scalable and perhaps, gorgeous.
                     </p>
                 </motion.div>
             </div>
