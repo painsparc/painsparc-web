@@ -328,8 +328,7 @@ export default function PainsparcHome() {
 
           <div className="mt-16 md:mt-0 text-right">
             <p className="text-zinc-400 text-sm leading-relaxed">
-              © 2026 Painsparc Systems. <br/> 
-              Architecting the void.
+              © 2026 The Painsparc Company Pvt. Ltd. <br/> 
             </p>
           </div>
 
