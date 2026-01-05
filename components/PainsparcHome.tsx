@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { 
   ArrowUpRight, ChevronDown, Terminal, Cpu, Globe, 
-  Database, Layers, Code, Smartphone, Wrench, Container, Server 
+  Database, Layers, Code, Smartphone, Wrench, Container, Server,
+  ArrowRight
 } from "lucide-react";
 import { useRef } from "react";
 import Tree from "./Tree";
@@ -122,7 +123,7 @@ export default function PainsparcHome() {
       </section>
 
       {/* 2. WORK SECTION */}
-      <div className="relative z-10 bg-white dark:bg-black pb-20 px-4 md:px-8">
+      <div className="relative z-10 bg-white dark:bg-black pb-12 px-4 md:px-8">
         
         {/* Animated Line Separator */}
         <motion.div 
@@ -249,10 +250,27 @@ export default function PainsparcHome() {
             </Link>
           </motion.div>
         </div>
+
+        {/* --- ADDED: TESTIMONIALS BUTTON SECTION --- */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="flex justify-center mt-12 md:mt-16"
+        >
+          <Link 
+            href="/testimonials" 
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-black dark:bg-black text-white dark:text-white rounded-full font-bold text-sm tracking-widest uppercase overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-xl border border-zinc-800 dark:border-zinc-200"
+          >
+            View Testimonials
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
       </div>
 
       {/* 3. ARSENAL (Faint Tiles) */}
-      <section className="relative z-10 bg-white dark:bg-black px-4 md:px-8 pb-32">
+      <section className="relative z-10 bg-white dark:bg-black px-4 md:px-8 pb-32 pt-12">
         <motion.div 
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
@@ -326,7 +344,7 @@ export default function PainsparcHome() {
               </div>
               {/* Identity Details */}
               <div className="space-y-1">
-                <h4 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tighter">
+                <h4 className="text-2xl font-bold text-zinc-900 dark:text-white uppercase tracking-tighter">
                   Pushkar Wagh
                 </h4>
                 <p className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest pb-4">
