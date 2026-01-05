@@ -21,6 +21,11 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "Painsparc",
   description: "Architecting logic for the digital void.",
+  // FIXED: Added icons metadata to link your cursive P
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -30,8 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* Inject all three variables */}
-      <body className={`${inter.variable} ${sacramento.variable} ${greatVibes.variable} font-sans`}>
+      <body className={`${inter.variable} ${sacramento.variable} ${greatVibes.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
