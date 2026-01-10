@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { 
   ArrowUpRight, ChevronDown, Terminal, Cpu, Globe, 
-  Database, Layers, Code, Smartphone, Wrench, Container, Server,
+  Database, Layers, Smartphone, Wrench, Container, Server,
   ArrowRight
 } from "lucide-react";
 import { useRef } from "react";
@@ -25,7 +25,7 @@ export default function PainsparcHome() {
   // Animation Variants
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 60 },
-    visible: (i: number) => ({
+    visible: (i: number = 0) => ({
       opacity: 1,
       y: 0,
       transition: {
@@ -63,7 +63,8 @@ export default function PainsparcHome() {
     >
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[90vh] md:h-[90vh] flex flex-col px-4 md:px-8">
+      {/* UX FIX: Reduced height to 85vh so the next section "peeks" visible at the bottom */}
+      <section className="relative min-h-[85vh] md:h-[85vh] flex flex-col px-4 md:px-8">
         
         {/* Header */}
         <header className="flex justify-between items-center py-6 relative z-30">
@@ -102,11 +103,12 @@ export default function PainsparcHome() {
         </div>
 
         {/* Scroll Indicator */}
+        {/* UX FIX: Removed 'hidden md:flex' -> 'flex' so Mobile users see this too */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="hidden md:flex absolute bottom-10 left-4 md:left-8 items-center gap-4 z-20"
+          className="flex absolute bottom-10 left-4 md:left-8 items-center gap-4 z-20"
         >
           <div className="h-[1px] w-12 bg-zinc-300 dark:bg-zinc-700" />
           <span className="text-xs font-mono uppercase text-zinc-400 tracking-widest">
@@ -123,16 +125,30 @@ export default function PainsparcHome() {
       </section>
 
       {/* 2. WORK SECTION */}
-      <div className="relative z-10 bg-white dark:bg-black pb-12 px-4 md:px-8">
+      {/* UX FIX: Reduced pt-20 to pt-10 so content sits closer to the Hero fold */}
+      <div className="relative z-10 bg-white dark:bg-black pb-12 px-4 md:px-8 pt-10">
         
         {/* Animated Line Separator */}
         <motion.div 
           variants={lineReveal}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-5%" }} // UX FIX: Triggers earlier (-5%)
           className="w-full h-[1px] bg-zinc-100 dark:bg-zinc-800 mb-20" 
         />
+        
+        {/* HEADING */}
+        <div className="max-w-6xl mx-auto mb-24 text-center">
+            <motion.h2 
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-10%" }} // UX FIX: Triggers earlier
+                className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white tracking-tighter"
+            >
+                Workflow Systems we Built
+            </motion.h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           
@@ -142,7 +158,7 @@ export default function PainsparcHome() {
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-10%" }} // UX FIX: Triggers earlier
           >
             <Link href="/orbit" className="group relative w-full h-[400px] block overflow-hidden rounded-[2rem]">
               <div className="w-full h-full bg-[#F4F4F5] dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300 relative">
@@ -199,7 +215,7 @@ export default function PainsparcHome() {
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-10%" }} // UX FIX: Triggers earlier
           >
             <Link href="/peak" className="group relative w-full h-[400px] block overflow-hidden rounded-[2rem]">
               <div className="w-full h-full bg-zinc-900 dark:bg-zinc-100 border border-zinc-800 dark:border-zinc-200 transition-colors duration-300 relative">
@@ -268,6 +284,67 @@ export default function PainsparcHome() {
           </Link>
         </motion.div>
       </div>
+
+      {/* --- NEW SECTION: PHILOSOPHY / WHAT WE DO --- */}
+      <section className="relative z-10 bg-white dark:bg-black py-24 md:py-32 px-4 md:px-8 border-b border-zinc-100 dark:border-zinc-900/50">
+        <div className="max-w-4xl mx-auto text-center">
+            
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-10%" }}
+                variants={fadeInUp}
+                custom={0}
+            >
+                <span className="block font-mono text-xs text-zinc-400 uppercase tracking-widest mb-6">
+                    Our Approach
+                </span>
+            </motion.div>
+
+            <motion.h2 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-10%" }}
+                variants={fadeInUp}
+                custom={1}
+                className="text-4xl md:text-6xl font-bold text-zinc-900 dark:text-white tracking-tighter mb-8 leading-tight"
+            >
+                That what we do  <br className="hidden md:block"/> 
+                <span className="text-zinc-500 dark:text-zinc-400">makes you do less.</span>
+            </motion.h2>
+
+            <motion.p 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-10%" }}
+                variants={fadeInUp}
+                custom={2}
+                className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-12 max-w-2xl mx-auto"
+            >
+                We architect intelligent software systems designed to absorb complexity. 
+                By automating the mundane and streamlining critical operations, 
+                our solutions act as a silent engine for your business—allowing you 
+                to step back from the noise and focus entirely on growth and strategy.
+            </motion.p>
+
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-10%" }}
+                variants={fadeInUp}
+                custom={3}
+            >
+                <Link 
+                    href="/about" 
+                    className="group inline-flex items-center gap-2 px-8 py-3 rounded-full border border-zinc-200 dark:border-zinc-700 hover:border-black dark:hover:border-white text-zinc-900 dark:text-white text-xs font-bold uppercase tracking-widest transition-all hover:bg-zinc-50 dark:hover:bg-zinc-900"
+                >
+                    Know More
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+            </motion.div>
+
+        </div>
+      </section>
 
       {/* 3. ARSENAL (Faint Tiles) */}
       <section className="relative z-10 bg-white dark:bg-black px-4 md:px-8 pb-32 pt-12">
