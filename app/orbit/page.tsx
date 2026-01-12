@@ -9,7 +9,7 @@ import {
   ChevronDown, ChevronUp, Code, Server, Shield, Cpu, Database,
   Eye, Layers, Clock, Network, Lock, Activity, 
   Infinity as InfinityIcon, Calendar, BookOpen, 
-  BarChart, Users, ArrowUpRight, CheckCircle2 // Added CheckCircle2
+  BarChart, Users, ArrowUpRight, CheckCircle2 
 } from "lucide-react";
 
 export default function OrbitPage() {
@@ -38,15 +38,6 @@ export default function OrbitPage() {
     animate: { 
       opacity: [0.3, 1, 0.3],
       transition: { duration: 2, repeat: Infinity, ease: "linear" } 
-    }
-  };
-
-  // Flip Animation for Attendance
-  const flip: Variants = {
-    initial: { rotateY: 0 },
-    animate: { 
-      rotateY: 360,
-      transition: { duration: 2, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" } 
     }
   };
 
@@ -182,13 +173,12 @@ export default function OrbitPage() {
                  </div>
               </motion.div>
 
-              {/* USP 3: FLASH ATTENDANCE (Span 1 - UPDATED: No Lightning, Green Theme) */}
+              {/* USP 3: FLASH ATTENDANCE (Span 1 - UPDATED: Removed Dynamic Icon) */}
               <motion.div variants={item} className="relative group bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:border-green-500/30 transition-colors h-[340px] flex flex-col justify-between overflow-hidden">
                  <Link href="/orbit/attendance" className="absolute inset-0 z-10" />
                  
                  <div>
                     <div className="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mb-6 text-green-600 dark:text-green-400">
-                        {/* Changed from Zap to CheckCircle2 */}
                         <CheckCircle2 size={24} />
                     </div>
                     <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Flash Attendance</h3>
@@ -197,24 +187,14 @@ export default function OrbitPage() {
                     </p>
                  </div>
 
-                 <div className="flex justify-center my-4">
-                    <motion.div 
-                        variants={flip}
-                        initial="initial"
-                        animate="animate"
-                        className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-500/30"
-                    >
-                        {/* Changed from Zap to CheckCircle2 */}
-                        <CheckCircle2 size={24} strokeWidth={3} />
-                    </motion.div>
-                 </div>
+                 {/* REMOVED: Dynamic Green Icon Animation Block */}
 
                  <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
                     <ArrowUpRight size={20} />
                  </div>
               </motion.div>
 
-              {/* USP 4: AUTO TIMETABLE (Span 2 - UPDATED: Dim Olive Green Theme) */}
+              {/* USP 4: AUTO TIMETABLE (Span 2 - Olive Theme) */}
               <motion.div variants={item} className="relative md:col-span-2 group bg-[#1E2415] border border-[#2F3820] p-8 rounded-3xl hover:border-[#465232] transition-colors h-[340px] flex flex-col justify-between overflow-hidden">
                  <Link href="/orbit/timetable" className="absolute inset-0 z-10" />
                  
@@ -264,14 +244,14 @@ export default function OrbitPage() {
                     </p>
                 </motion.div>
 
-                {/* 2. Staff Manager */}
+                {/* 2. Fee Manager */}
                 <motion.div variants={item} className="p-6 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
                     <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-green-600 dark:text-green-400">
                         <BarChart size={20} />
                     </div>
-                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Staff Manager</h4>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Fee Manager</h4>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        Manage what staff teacher what all classes and subjects with a simple click.
+                        Track tuition, send automated WhatsApp reminders to parents, and generate financial reports.
                     </p>
                 </motion.div>
 
@@ -280,9 +260,9 @@ export default function OrbitPage() {
                     <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400">
                         <BookOpen size={20} />
                     </div>
-                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Notes Library</h4>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Digital Library</h4>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        Get all relevant downloadable notes and short notes for you subjects.
+                        Issue books, track returns, and manage fine calculations automatically.
                     </p>
                 </motion.div>
 
@@ -291,9 +271,9 @@ export default function OrbitPage() {
                     <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400">
                         <Users size={20} />
                     </div>
-                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Parent Access</h4>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Parent Connect</h4>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        Parents can access the app and view general announcements, notices and timetables from anywhere without a login.
+                        Real-time updates for parents on attendance, marks, and school announcements.
                     </p>
                 </motion.div>
 
