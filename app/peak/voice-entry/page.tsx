@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Link from "next/link";
 import { 
   ArrowLeft, Mic, Zap, CheckCircle2, 
-  BrainCircuit, Waveform, ArrowRight, Keyboard
+  BrainCircuit, ArrowRight, Keyboard
 } from "lucide-react";
 import { useRef } from "react";
 
