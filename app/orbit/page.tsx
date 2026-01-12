@@ -5,11 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { 
-  ArrowLeft, FileText, Zap, ArrowRight, 
+  ArrowLeft, FileText, ArrowRight, 
   ChevronDown, ChevronUp, Code, Server, Shield, Cpu, Database,
   Eye, Layers, Clock, Network, Lock, Activity, 
-  Infinity as InfinityIcon, Calendar, BookOpen, GraduationCap, 
-  BarChart, Users, ArrowUpRight
+  Infinity as InfinityIcon, Calendar, BookOpen, 
+  BarChart, Users, ArrowUpRight, CheckCircle2 // Added CheckCircle2
 } from "lucide-react";
 
 export default function OrbitPage() {
@@ -43,9 +43,9 @@ export default function OrbitPage() {
 
   // Flip Animation for Attendance
   const flip: Variants = {
-    initial: { rotateX: 0 },
+    initial: { rotateY: 0 },
     animate: { 
-      rotateX: 360,
+      rotateY: 360,
       transition: { duration: 2, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" } 
     }
   };
@@ -182,13 +182,14 @@ export default function OrbitPage() {
                  </div>
               </motion.div>
 
-              {/* USP 3: RAPID ATTENDANCE (Span 1 - White Theme) */}
-              <motion.div variants={item} className="relative group bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:border-blue-500/30 transition-colors h-[340px] flex flex-col justify-between overflow-hidden">
+              {/* USP 3: FLASH ATTENDANCE (Span 1 - UPDATED: No Lightning, Green Theme) */}
+              <motion.div variants={item} className="relative group bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:border-green-500/30 transition-colors h-[340px] flex flex-col justify-between overflow-hidden">
                  <Link href="/orbit/attendance" className="absolute inset-0 z-10" />
                  
                  <div>
                     <div className="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mb-6 text-green-600 dark:text-green-400">
-                        <Zap size={24} />
+                        {/* Changed from Zap to CheckCircle2 */}
+                        <CheckCircle2 size={24} />
                     </div>
                     <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Flash Attendance</h3>
                     <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-sm">
@@ -203,7 +204,8 @@ export default function OrbitPage() {
                         animate="animate"
                         className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-500/30"
                     >
-                        <Zap size={24} fill="currentColor" />
+                        {/* Changed from Zap to CheckCircle2 */}
+                        <CheckCircle2 size={24} strokeWidth={3} />
                     </motion.div>
                  </div>
 
@@ -212,25 +214,25 @@ export default function OrbitPage() {
                  </div>
               </motion.div>
 
-              {/* USP 4: AUTO TIMETABLE (Span 2 - Dark Theme) */}
-              <motion.div variants={item} className="relative md:col-span-2 group bg-zinc-900 dark:bg-white p-8 rounded-3xl border border-zinc-900 dark:border-white text-white dark:text-black h-[340px] flex flex-col justify-between overflow-hidden">
+              {/* USP 4: AUTO TIMETABLE (Span 2 - UPDATED: Dim Olive Green Theme) */}
+              <motion.div variants={item} className="relative md:col-span-2 group bg-[#1E2415] border border-[#2F3820] p-8 rounded-3xl hover:border-[#465232] transition-colors h-[340px] flex flex-col justify-between overflow-hidden">
                  <Link href="/orbit/timetable" className="absolute inset-0 z-10" />
                  
                  {/* Decorative Grid Background */}
                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
                  <div className="relative z-10">
-                    <div className="w-12 h-12 bg-zinc-800 dark:bg-zinc-100 rounded-2xl flex items-center justify-center mb-6">
-                        <Calendar size={20} />
+                    <div className="w-12 h-12 bg-[#2a3322] rounded-2xl flex items-center justify-center mb-6 border border-[#3A452D]">
+                        <Calendar size={20} className="text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-2">Neural Timetable</h3>
-                    <p className="opacity-70 leading-relaxed max-w-lg">
-                        Conflict-free scheduling in one click. Our constraint solver handles teacher availability, room capacity, and subject weightage automatically. Includes smart substitution for absent teachers.
+                    <h3 className="text-2xl font-bold mb-2 text-white">Neural Timetable</h3>
+                    <p className="text-[#8e9c85] leading-relaxed max-w-lg">
+                        Conflict-free scheduling in one click. Our constraint solver handles teacher availability, room capacity, and subject weightage automatically.
                     </p>
                  </div>
 
-                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-800 dark:bg-zinc-200 flex items-center justify-center group-hover:bg-white group-hover:text-black dark:group-hover:bg-black dark:group-hover:text-white transition-all duration-300">
-                    <ArrowUpRight size={20} />
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-[#2a3322] flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <ArrowUpRight size={20} className="text-white group-hover:text-black" />
                  </div>
               </motion.div>
 
@@ -262,14 +264,14 @@ export default function OrbitPage() {
                     </p>
                 </motion.div>
 
-                {/* 2. Fee Manager */}
+                {/* 2. Staff Manager */}
                 <motion.div variants={item} className="p-6 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
                     <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-green-600 dark:text-green-400">
                         <BarChart size={20} />
                     </div>
-                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Fee Manager</h4>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Staff Manager</h4>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        Track tuition, send automated WhatsApp reminders to parents, and generate financial reports.
+                        Manage what staff teacher what all classes and subjects with a simple click.
                     </p>
                 </motion.div>
 
@@ -278,9 +280,9 @@ export default function OrbitPage() {
                     <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400">
                         <BookOpen size={20} />
                     </div>
-                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Digital Library</h4>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Notes Library</h4>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        Issue books, track returns, and manage fine calculations automatically.
+                        Get all relevant downloadable notes and short notes for you subjects.
                     </p>
                 </motion.div>
 
@@ -289,16 +291,16 @@ export default function OrbitPage() {
                     <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400">
                         <Users size={20} />
                     </div>
-                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Parent Connect</h4>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Parent Access</h4>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        Real-time updates for parents on attendance, marks, and school announcements.
+                        Parents can access the app and view general announcements, notices and timetables from anywhere without a login.
                     </p>
                 </motion.div>
 
             </motion.div>
           </div>
 
-          {/* 4. TECH SPECS TOGGLE (Kept as requested) */}
+          {/* 4. TECH SPECS TOGGLE */}
           <div className="flex flex-col items-center mb-8">
              <button 
                 onClick={() => setShowSpecs(!showSpecs)}
@@ -402,7 +404,7 @@ export default function OrbitPage() {
                             {/* 10. Operations */}
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2 text-zinc-400 text-xs uppercase tracking-wider font-bold">
-                                    <Zap size={14}/> Operations
+                                    <Clock size={14}/> Operations
                                 </div>
                                 <div className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">Rapid-Fire State</div>
                                 <p className="text-[10px] text-zinc-500 leading-tight">Batch-write attendance flow.</p>

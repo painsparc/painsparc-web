@@ -4,7 +4,7 @@ import { motion, Variants, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { 
   ArrowLeft, Database, Search, Filter, Tag, 
-  FileCheck, ArrowRight, Server, Layers, Archive
+  FileCheck, ArrowRight, Server, Archive
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -150,15 +150,16 @@ function VaultSimulator() {
     }, []);
 
     return (
-        <div className="w-full max-w-4xl mx-auto bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden flex flex-col md:flex-row h-[500px]">
+        // FIXED CONTAINER: h-auto on mobile to allow stacking, fixed height on desktop
+        <div className="w-full max-w-4xl mx-auto bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden flex flex-col md:flex-row h-auto md:h-[500px]">
             
             {/* LEFT: FILTER SIDEBAR */}
             <div className="w-full md:w-1/3 bg-zinc-50 dark:bg-zinc-950 p-6 border-b md:border-b-0 md:border-r border-zinc-200 dark:border-zinc-800 flex flex-col">
-                <div className="flex items-center gap-2 mb-8 text-zinc-400 text-xs font-bold uppercase tracking-widest">
+                <div className="flex items-center gap-2 mb-6 md:mb-8 text-zinc-400 text-xs font-bold uppercase tracking-widest">
                     <Filter size={14} /> Filter Stack
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                     {filters.map((filter, i) => (
                         <motion.div 
                             key={i}
@@ -168,7 +169,7 @@ function VaultSimulator() {
                                 x: i < activeFilter ? 0 : -10,
                                 scale: i + 1 === activeFilter ? 1.05 : 1
                             }}
-                            className={`p-4 rounded-xl border flex items-center justify-between transition-colors ${i < activeFilter ? 'bg-white dark:bg-zinc-900 border-indigo-500/50 shadow-sm' : 'border-transparent'}`}
+                            className={`p-3 md:p-4 rounded-xl border flex items-center justify-between transition-colors ${i < activeFilter ? 'bg-white dark:bg-zinc-900 border-indigo-500/50 shadow-sm' : 'border-transparent'}`}
                         >
                             <span className={`text-sm font-medium ${i < activeFilter ? 'text-zinc-900 dark:text-white' : 'text-zinc-500'}`}>{filter}</span>
                             {i < activeFilter && <CheckCircle2 size={16} className="text-indigo-500" />}
@@ -176,8 +177,8 @@ function VaultSimulator() {
                     ))}
                 </div>
 
-                <div className="mt-auto pt-8">
-                    <div className="text-xs text-zinc-500 mb-2">Matches Found</div>
+                <div className="mt-8 md:mt-auto pt-4 md:pt-8 border-t md:border-t-0 border-zinc-200 dark:border-zinc-800 md:border-none flex justify-between md:block items-center">
+                    <div className="text-xs text-zinc-500 mb-0 md:mb-2">Matches Found</div>
                     <div className="text-3xl font-mono font-bold text-zinc-900 dark:text-white">
                         {activeFilter === 0 ? "15,420" : 
                          activeFilter === 1 ? "4,200" : 
@@ -188,7 +189,7 @@ function VaultSimulator() {
             </div>
 
             {/* RIGHT: RESULTS AREA */}
-            <div className="flex-1 p-6 relative bg-zinc-100/50 dark:bg-zinc-900/50">
+            <div className="flex-1 p-6 relative bg-zinc-100/50 dark:bg-zinc-900/50 min-h-[400px] md:min-h-0">
                 {/* Simulated Search Bar */}
                 <div className="flex items-center gap-4 bg-white dark:bg-black p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 mb-6 shadow-sm">
                     <Search size={18} className="text-zinc-400" />
@@ -219,10 +220,15 @@ function VaultSimulator() {
                         
                         {/* Loading State */}
                         {activeFilter < 4 && (
-                            <div className="flex flex-col items-center justify-center h-[200px] text-zinc-400">
+                            <motion.div 
+                                initial={{ opacity: 0 }} 
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="flex flex-col items-center justify-center h-[200px] text-zinc-400 absolute inset-0"
+                            >
                                 <Server size={32} className="animate-pulse mb-4 opacity-50" />
                                 <span className="text-xs uppercase tracking-widest">Querying Vault...</span>
-                            </div>
+                            </motion.div>
                         )}
                     </AnimatePresence>
                 </div>
