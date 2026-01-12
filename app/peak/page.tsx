@@ -4,17 +4,17 @@ import { motion, Variants, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-// UPDATED IMPORTS with more icons
 import { 
-  ArrowLeft, TrendingUp, ShieldCheck, 
-  Cpu, ArrowRight, Lock, ChevronDown, ChevronUp, 
+  ArrowLeft, TrendingUp, Cpu, ArrowRight, Lock, ChevronDown, ChevronUp, 
   Zap, Smartphone, Fingerprint, Activity, Layers, 
-  Database, FileText, BarChart3, Globe, Server
+  Database, FileText, BarChart3, Globe, Server,
+  Mic, Calendar, QrCode, ArrowUpRight 
 } from "lucide-react";
 
 export default function PeakPage() {
   const [showSpecs, setShowSpecs] = useState(false);
 
+  // Staggered Fade In
   const container: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -32,10 +32,29 @@ export default function PeakPage() {
     },
   };
 
+  // Pulse Animation for Voice
+  const pulse: Variants = {
+    initial: { scale: 1, opacity: 0.5 },
+    animate: { 
+      scale: [1, 1.5, 1], 
+      opacity: [0.5, 0, 0.5],
+      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" } 
+    }
+  };
+
+  // Scanning Animation for Performance
+  const scan: Variants = {
+    initial: { left: "-10%" },
+    animate: { 
+      left: "110%", 
+      transition: { duration: 3, repeat: Infinity, ease: "linear" } 
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
       
-      {/* HEADER (Dark Theme Forced) */}
+      {/* HEADER */}
       <header className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-6 bg-black/80 backdrop-blur-md border-b border-zinc-900">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors">
@@ -84,10 +103,10 @@ export default function PeakPage() {
             </div>
           </motion.div>
 
-          {/* 2. THE CORE LOGIC (Features) */}
+          {/* 2. USP FEATURES GRID (BENTO LAYOUT) */}
           <div className="mb-24">
             <h2 className="text-xs font-mono uppercase tracking-widest text-zinc-500 mb-8 border-b border-zinc-800 pb-2">
-              Performance Metrics
+              Core Selling Propositions
             </h2>
 
             <motion.div 
@@ -98,66 +117,112 @@ export default function PeakPage() {
               className="grid grid-cols-1 md:grid-cols-3 gap-6"
             >
               
-              {/* Feature 1: Dual Engine */}
-              <motion.div variants={item} className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 md:col-span-2 group hover:border-zinc-600 transition-colors">
-                 <div className="flex flex-col h-full justify-between">
-                    <div>
-                        <div className="w-12 h-12 bg-zinc-950 rounded-2xl flex items-center justify-center mb-6 border border-zinc-800">
-                            <Cpu className="text-white" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Dual-Engine Performance</h3>
-                        <p className="text-zinc-400 leading-relaxed max-w-lg">
-                            Switch seamlessly between "Ultra" mode for heavy analytics and "Lite" mode for rapid data entry on the field. The graphics engine adapts to your device state instantly.
-                        </p>
-                    </div>
-                    <div className="mt-8 flex gap-4">
-                         <div className="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
-                            <motion.div 
-                                initial={{ width: 0 }} 
-                                whileInView={{ width: "90%" }} 
-                                transition={{ duration: 1.5, ease: "easeOut" }} 
-                                className="h-full bg-emerald-500" 
-                            />
-                         </div>
-                    </div>
-                 </div>
-              </motion.div>
-
-              {/* Feature 2: Velocity */}
-              <motion.div variants={item} className="bg-white p-8 rounded-3xl border border-white text-black">
-                <div className="w-12 h-12 bg-zinc-100 rounded-2xl flex items-center justify-center mb-6">
-                    <TrendingUp className="text-black" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">High-Velocity Pipeline</h3>
-                <p className="text-zinc-600 leading-relaxed text-sm">
-                   Leads decay every minute they sit idle. Peak's pipeline visualizes stagnation and forces movement. Close deals 3x faster.
-                </p>
-              </motion.div>
-
-              {/* Feature 3: Retention */}
-              <motion.div variants={item} className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800">
-                 <div className="w-12 h-12 bg-zinc-950 rounded-2xl flex items-center justify-center mb-6 border border-zinc-800">
-                    <ShieldCheck className="text-emerald-400" />
-                 </div>
-                 <h3 className="text-xl font-bold text-white mb-3">Automated Retention</h3>
-                 <p className="text-zinc-400 leading-relaxed text-sm">
-                    Don't let clients drift away. Our "Retention Automata" detects inactivity and triggers re-engagement protocols automatically.
-                 </p>
-              </motion.div>
-
-              {/* Feature 4: Security */}
-              <motion.div variants={item} className="bg-zinc-900 p-8 rounded-3xl border border-zinc-800 md:col-span-2 flex items-center justify-between">
+              {/* USP 1: NEURAL VOICE ENTRY (Long Tile - Span 2) */}
+              <motion.div variants={item} className="relative md:col-span-2 group bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-zinc-600 transition-colors h-[320px] flex flex-col justify-between overflow-hidden">
+                 <Link href="/peak/voice-entry" className="absolute inset-0 z-10" />
+                 
                  <div>
-                    <h4 className="text-lg font-bold text-white mb-1">Encrypted Vault</h4>
-                    <p className="text-sm text-zinc-500">AES-256 at rest. Biometric access control.</p>
+                    <div className="relative w-12 h-12 flex items-center justify-center mb-6">
+                        {/* Dynamic Pulse Animation */}
+                        <motion.div variants={pulse} initial="initial" animate="animate" className="absolute inset-0 bg-red-500 rounded-full blur-md" />
+                        <div className="relative z-10 w-12 h-12 bg-zinc-950 rounded-2xl flex items-center justify-center border border-zinc-800 group-hover:border-red-500/50 transition-colors">
+                            <Mic className="text-white" />
+                        </div>
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-white mb-2">Neural Voice Entry</h3>
+                    <p className="text-zinc-400 leading-relaxed max-w-md">
+                        Stop typing. Speak natural commands to log data instantly. Our model parses context, dates, and amounts with 99% accuracy.
+                    </p>
                  </div>
-                 <Lock className="text-zinc-600" />
+
+                 {/* Arrow */}
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <ArrowUpRight size={20} />
+                 </div>
+              </motion.div>
+
+              {/* USP 2: HIGH VELOCITY PIPELINE (Short Tile - Span 1) */}
+              <motion.div variants={item} className="relative group bg-white p-8 rounded-3xl border border-white text-black h-[320px] flex flex-col justify-between overflow-hidden">
+                 <Link href="/peak/pipeline" className="absolute inset-0 z-10" />
+
+                 <div>
+                    <div className="w-12 h-12 bg-zinc-100 rounded-2xl flex items-center justify-center mb-6">
+                        <TrendingUp className="text-black" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">High-Velocity Pipeline</h3>
+                    <p className="text-zinc-600 leading-relaxed text-sm font-medium">
+                       Visual stagnation tracking. Peak highlights decaying leads and forces movement.
+                    </p>
+                 </div>
+
+                 {/* Subtle Dynamic Graph Bar */}
+                 <div className="absolute bottom-0 left-0 w-full h-1 bg-zinc-100">
+                    <motion.div 
+                        initial={{ width: "0%" }}
+                        whileInView={{ width: "100%" }}
+                        transition={{ duration: 2, ease: "easeInOut" }}
+                        className="h-full bg-black" 
+                    />
+                 </div>
+
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300">
+                    <ArrowUpRight size={20} />
+                 </div>
+              </motion.div>
+
+              {/* USP 3: LIVE APPOINTMENT BOOKER (Short Tile - Span 1) - DIM OLIVE GREEN */}
+              <motion.div variants={item} className="relative group bg-[#13160F] p-8 rounded-3xl border border-[#24291B] hover:border-[#465232] transition-colors h-[320px] flex flex-col justify-between overflow-hidden">
+                 <Link href="/peak/appointments" className="absolute inset-0 z-10" />
+                 
+                 <div>
+                    <div className="w-12 h-12 bg-[#1E2415] rounded-2xl flex items-center justify-center mb-6 border border-[#2F3820] group-hover:border-emerald-500/50 transition-colors">
+                        <div className="flex gap-1">
+                            <QrCode className="text-white" size={18} />
+                        </div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Live Booking</h3>
+                    <p className="text-[#8e9c85] leading-relaxed text-sm">
+                        Zero-friction. Clients scan QR codes to book slots. Updates reflect live.
+                    </p>
+                 </div>
+
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-[#1E2415] flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <ArrowUpRight size={20} />
+                 </div>
+              </motion.div>
+
+              {/* USP 4: DUAL ENGINE PERFORMANCE (Long Tile - Span 2) */}
+              <motion.div variants={item} className="relative md:col-span-2 group bg-zinc-900 p-8 rounded-3xl border border-zinc-800 hover:border-zinc-600 transition-colors h-[320px] flex flex-col justify-between overflow-hidden">
+                 <Link href="/peak/performance" className="absolute inset-0 z-10" />
+                 
+                 {/* Scanning Line Animation */}
+                 <motion.div 
+                    variants={scan}
+                    initial="initial"
+                    animate="animate"
+                    className="absolute top-0 w-[2px] h-full bg-gradient-to-b from-transparent via-emerald-500 to-transparent opacity-20 pointer-events-none"
+                 />
+
+                 <div>
+                    <div className="w-12 h-12 bg-zinc-950 rounded-2xl flex items-center justify-center mb-6 border border-zinc-800 group-hover:border-emerald-500/50 transition-colors">
+                        <Cpu className="text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Dual-Engine Core</h3>
+                    <p className="text-zinc-400 leading-relaxed max-w-md">
+                        Ultra-Light Mode for field data entry. Heavy-Analytics Mode for desktop reviews. The system adapts to your device state instantly to preserve battery and maintain 120fps.
+                    </p>
+                 </div>
+
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <ArrowUpRight size={20} />
+                 </div>
               </motion.div>
 
             </motion.div>
           </div>
 
-          {/* 3. TECH SPECS TOGGLE (Impressive Client-Facing Specs) */}
+          {/* 3. TECH SPECS TOGGLE */}
           <div className="flex flex-col items-center mb-8">
              <button 
                 onClick={() => setShowSpecs(!showSpecs)}
@@ -175,7 +240,6 @@ export default function PeakPage() {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden w-full max-w-5xl"
                     >
-                        {/* UPDATED: 12-Item Grid */}
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-8 bg-zinc-900 rounded-3xl border border-zinc-800 mb-12 shadow-2xl">
                             
                             {/* 1. Optimization */}

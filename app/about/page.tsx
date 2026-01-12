@@ -1,35 +1,13 @@
 "use client";
 
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, Zap, Shield, MousePointer2, ChevronDown } from "lucide-react";
-import { useRef } from "react";
 
 export default function AboutPage() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Parallax for Hero Text
-  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 100]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.5]);
-
-  // Floating Animation for Icons
-  const float: Variants = {
-    initial: { y: 0 },
-    animate: { 
-      y: [0, -10, 0],
-      transition: {
-        duration: 4,
-        ease: "easeInOut",
-        repeat: Infinity,
-      }
-    }
-  };
-
-  // Standard Fade Up
+  // REMOVED: useScroll, useTransform, and useRef (Heavy scroll event listeners)
+  
+  // Standard Fade Up (Kept because it runs only once)
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: (i: number = 0) => ({
@@ -52,38 +30,18 @@ export default function AboutPage() {
   };
 
   return (
-    <div ref={containerRef} className="min-h-screen relative bg-white dark:bg-black font-sans selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black overflow-hidden">
+    <div className="min-h-screen relative bg-white dark:bg-black font-sans selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black overflow-hidden">
       
-      {/* --- DYNAMIC BACKGROUND ORB --- */}
+      {/* --- OPTIMIZED STATIC BACKGROUND ORBS --- */}
+      {/* These look the same but are static (0% CPU usage) */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <motion.div 
-            animate={{ 
-                rotate: [0, 360], 
-                scale: [1, 1.2, 1],
-            }}
-            transition={{ 
-                duration: 20, 
-                repeat: Infinity, 
-                ease: "linear" 
-            }}
-            className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-zinc-100 dark:bg-zinc-900/40 rounded-full blur-[100px] opacity-60"
-        />
-        <motion.div 
-            animate={{ 
-                rotate: [360, 0], 
-                scale: [1, 1.1, 1],
-            }}
-            transition={{ 
-                duration: 25, 
-                repeat: Infinity, 
-                ease: "linear" 
-            }}
-            className="absolute top-[40%] -left-[10%] w-[500px] h-[500px] bg-zinc-50 dark:bg-zinc-900/20 rounded-full blur-[80px] opacity-40"
-        />
+        <div className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-zinc-100 dark:bg-zinc-900/40 rounded-full blur-[100px] opacity-60" />
+        <div className="absolute top-[40%] -left-[10%] w-[500px] h-[500px] bg-zinc-50 dark:bg-zinc-900/20 rounded-full blur-[80px] opacity-40" />
       </div>
 
       {/* 1. HEADER */}
-      <header className="relative z-20 flex justify-between items-center py-6 px-4 md:px-8 border-b border-zinc-100 dark:border-zinc-900/50 backdrop-blur-sm">
+      {/* Replaced backdrop-blur with solid transparent bg for performance */}
+      <header className="relative z-20 flex justify-between items-center py-6 px-4 md:px-8 border-b border-zinc-100 dark:border-zinc-900/50 bg-white/90 dark:bg-black/90">
         <Link href="/" className="group flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-black dark:hover:text-white transition-colors">
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             Back to Home
@@ -94,12 +52,11 @@ export default function AboutPage() {
       </header>
 
       {/* 2. HERO: THE MANIFESTO */}
-      {/* Reduced padding bottom from pb-20 to pb-10 to peek the next section */}
       <section className="relative z-10 pt-32 pb-10 min-h-[85vh] flex flex-col justify-between px-4 md:px-8 max-w-5xl mx-auto">
         
         <div>
+            {/* Removed heavy parallax transform styles */}
             <motion.div
-                style={{ y: heroY, opacity: heroOpacity }}
                 initial="hidden"
                 animate="visible"
                 variants={fadeInUp}
@@ -149,7 +106,7 @@ export default function AboutPage() {
             </motion.div>
         </div>
 
-        {/* --- ADDED: SCROLL INDICATOR --- */}
+        {/* SCROLL INDICATOR */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -171,7 +128,6 @@ export default function AboutPage() {
       </section>
 
       {/* 3. CORE VALUES GRID */}
-      {/* Reduced margin trigger (-10%) so elements appear SOONER as you scroll */}
       <section className="relative z-10 py-24 px-4 md:px-8 bg-zinc-50/50 dark:bg-zinc-900/30 border-y border-zinc-100 dark:border-zinc-900/50">
         <div className="max-w-6xl mx-auto">
             
@@ -210,15 +166,10 @@ export default function AboutPage() {
                         viewport={{ once: true, margin: "-10%" }} 
                         className="group"
                     >
-                        {/* FLOATING ICON ANIMATION */}
-                        <motion.div 
-                            variants={float}
-                            initial="initial"
-                            animate="animate"
-                            className="w-12 h-12 bg-white dark:bg-black rounded-2xl flex items-center justify-center mb-6 border border-zinc-200 dark:border-zinc-800 shadow-sm group-hover:shadow-md group-hover:border-zinc-400 dark:group-hover:border-zinc-600 transition-all duration-500"
-                        >
+                        {/* Static Icon Container (Removed infinite float) */}
+                        <div className="w-12 h-12 bg-white dark:bg-black rounded-2xl flex items-center justify-center mb-6 border border-zinc-200 dark:border-zinc-800 shadow-sm group-hover:shadow-md group-hover:border-zinc-400 dark:group-hover:border-zinc-600 transition-all duration-300">
                             <item.icon size={20} className="text-zinc-900 dark:text-white" />
-                        </motion.div>
+                        </div>
 
                         <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-4 tracking-tight">
                             {item.title}
@@ -257,7 +208,7 @@ export default function AboutPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-10%" }}
                     transition={{ delay: i * 0.15, duration: 0.6 }}
-                    className="flex items-center gap-6 p-6 border border-zinc-100 dark:border-zinc-800 rounded-2xl bg-white/80 dark:bg-black/40 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors backdrop-blur-sm"
+                    className="flex items-center gap-6 p-6 border border-zinc-100 dark:border-zinc-800 rounded-2xl bg-white/80 dark:bg-black/40 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors"
                 >
                     <div className="flex-shrink-0 text-zinc-300 dark:text-zinc-700 font-mono text-xs font-bold tracking-widest">
                         0{i + 1}
