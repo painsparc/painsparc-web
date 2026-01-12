@@ -8,7 +8,7 @@ import {
   ArrowLeft, TrendingUp, Cpu, ArrowRight, Lock, ChevronDown, ChevronUp, 
   Zap, Smartphone, Fingerprint, Activity, Layers, 
   Database, FileText, BarChart3, Globe, Server,
-  Mic, Calendar, QrCode, ArrowUpRight 
+  Mic, Calendar, QrCode, ArrowUpRight, ShoppingBag, Receipt, Package, Coins
 } from "lucide-react";
 
 export default function PeakPage() {
@@ -222,13 +222,74 @@ export default function PeakPage() {
             </motion.div>
           </div>
 
-          {/* 3. TECH SPECS TOGGLE */}
+          {/* 3. NEW SECTION: COMPLETE ECOSYSTEM */}
+          <div className="mb-24">
+            <h2 className="text-xs font-mono uppercase tracking-widest text-zinc-500 mb-8 border-b border-zinc-800 pb-2">
+              The Complete Ecosystem
+            </h2>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={container}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            >
+                
+                {/* 1. Finance */}
+                <motion.div variants={item} className="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
+                    <div className="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center mb-4 border border-zinc-800 text-emerald-500">
+                        <Coins size={20} />
+                    </div>
+                    <h4 className="font-bold text-white text-lg mb-2">Finance Core</h4>
+                    <p className="text-sm text-zinc-400 leading-relaxed">
+                        Atomic ledger system. Track expenses, profit, and loss with decimal precision.
+                    </p>
+                </motion.div>
+
+                {/* 2. Inventory */}
+                <motion.div variants={item} className="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
+                    <div className="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center mb-4 border border-zinc-800 text-blue-500">
+                        <Package size={20} />
+                    </div>
+                    <h4 className="font-bold text-white text-lg mb-2">Smart Inventory</h4>
+                    <p className="text-sm text-zinc-400 leading-relaxed">
+                        Live stock decrements. Get low-stock alerts before you run out.
+                    </p>
+                </motion.div>
+
+                {/* 3. Auto-Receipts */}
+                <motion.div variants={item} className="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
+                    <div className="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center mb-4 border border-zinc-800 text-purple-500">
+                        <Receipt size={20} />
+                    </div>
+                    <h4 className="font-bold text-white text-lg mb-2">Auto Receipts</h4>
+                    <p className="text-sm text-zinc-400 leading-relaxed">
+                        Generates PDF invoices instantly and sends them via WhatsApp automatically.
+                    </p>
+                </motion.div>
+
+                {/* 4. Marketplace */}
+                <motion.div variants={item} className="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
+                    <div className="w-10 h-10 bg-zinc-900 rounded-lg flex items-center justify-center mb-4 border border-zinc-800 text-amber-500">
+                        <ShoppingBag size={20} />
+                    </div>
+                    <h4 className="font-bold text-white text-lg mb-2">Marketplace</h4>
+                    <p className="text-sm text-zinc-400 leading-relaxed">
+                        Integrated store. Shop for products or sell to clients directly within the app.
+                    </p>
+                </motion.div>
+
+            </motion.div>
+          </div>
+
+          {/* 4. TECH SPECS TOGGLE */}
           <div className="flex flex-col items-center mb-8">
              <button 
                 onClick={() => setShowSpecs(!showSpecs)}
                 className="text-xs md:text-sm font-mono text-zinc-500 hover:text-white transition-colors flex items-center gap-2 mb-6"
              >
-                {showSpecs ? "Hide Technical Specifications" : "View Technical Specifications"}
+                {showSpecs ? "Hide Deep Technical Specifications" : "View Deep Technical Specifications"}
                 {showSpecs ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
              </button>
 
@@ -380,7 +441,7 @@ export default function PeakPage() {
              </AnimatePresence>
           </div>
 
-          {/* 4. CTA */}
+          {/* 5. CTA */}
           <div className="flex justify-center">
             <Link 
                 href="/contact"
