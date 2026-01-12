@@ -5,9 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { 
-  ArrowLeft, Infinity as InfinityIcon, FileText, Zap, ArrowRight, 
+  ArrowLeft, FileText, Zap, ArrowRight, 
   ChevronDown, ChevronUp, Code, Server, Shield, Cpu, Database,
-  Eye, Layers, Clock, Network, Lock, Activity
+  Eye, Layers, Clock, Network, Lock, Activity, 
+  Infinity as InfinityIcon, Calendar, BookOpen, GraduationCap, 
+  BarChart, Users, ArrowUpRight
 } from "lucide-react";
 
 export default function OrbitPage() {
@@ -28,6 +30,24 @@ export default function OrbitPage() {
       y: 0, 
       transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as const }
     },
+  };
+
+  // Pulse Animation for Generator
+  const generatePulse: Variants = {
+    initial: { opacity: 0.3 },
+    animate: { 
+      opacity: [0.3, 1, 0.3],
+      transition: { duration: 2, repeat: Infinity, ease: "linear" } 
+    }
+  };
+
+  // Flip Animation for Attendance
+  const flip: Variants = {
+    initial: { rotateX: 0 },
+    animate: { 
+      rotateX: 360,
+      transition: { duration: 2, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" } 
+    }
   };
 
   return (
@@ -83,7 +103,7 @@ export default function OrbitPage() {
             </div>
           </motion.div>
 
-          {/* 2. THE CORE LOGIC (Features) */}
+          {/* 2. USP FEATURES GRID */}
           <div className="mb-24">
             <h2 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-2">
               Core Architecture
@@ -97,63 +117,188 @@ export default function OrbitPage() {
               className="grid grid-cols-1 md:grid-cols-3 gap-6"
             >
               
-              {/* Feature 1 */}
-              <motion.div variants={item} className="bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-                <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mb-6">
-                    <InfinityIcon className="text-blue-600 dark:text-blue-400" />
-                </div>
-                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">Infinite Evaluation</h3>
-                <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-sm">
-                   Automatic, unlimited test generation. Our engine creates unique question sets instantly, eliminating manual paper setting forever.
-                </p>
-              </motion.div>
-
-              {/* Feature 2: UNIVERSAL EXAM SUPPORT */}
-              <motion.div variants={item} className="bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 md:col-span-2">
-                 <div className="flex flex-col h-full justify-between">
-                    <div>
-                        <div className="w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-2xl flex items-center justify-center mb-6">
-                            <FileText className="text-zinc-900 dark:text-zinc-100" />
-                        </div>
-                        <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">Universal Exam Protocols</h3>
-                        <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-lg">
-                            From high-stakes competitive patterns like JEE & NEET to standard subjective Board Exams. Orbit's engine natively understands and formats for every curriculum requirement instantly.
-                        </p>
-                    </div>
-                    <div className="mt-8 flex gap-4">
-                        <div className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-300">Objective (MCQ)</div>
-                        <div className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-300">Subjective Theory</div>
-                        <div className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-300">Hybrid Mode</div>
+              {/* USP 1: AUTO TEST GENERATION (Span 2 - White Theme) */}
+              <motion.div variants={item} className="relative md:col-span-2 group bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:border-blue-500/30 transition-colors h-[340px] flex flex-col justify-between overflow-hidden">
+                 <Link href="/orbit/generator" className="absolute inset-0 z-10" />
+                 
+                 {/* Dynamic Generating Background */}
+                 <div className="absolute right-0 top-0 w-1/2 h-full opacity-5 pointer-events-none">
+                    <div className="flex flex-col gap-2 p-8">
+                        {[1,2,3,4,5].map(i => (
+                            <motion.div 
+                                key={i}
+                                variants={generatePulse}
+                                initial="initial"
+                                animate="animate"
+                                transition={{ delay: i * 0.2 }}
+                                className="h-2 bg-black dark:bg-white rounded-full w-full"
+                            />
+                        ))}
                     </div>
                  </div>
+
+                 <div>
+                    <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mb-6 text-blue-600 dark:text-blue-400">
+                        <InfinityIcon size={24} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Auto-Test Engine</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-md">
+                       Generate unique, balanced question papers in seconds. Our algorithm creates unlimited sets with zero overlap, eliminating manual setting forever.
+                    </p>
+                 </div>
+
+                 <div className="flex gap-4 mt-4">
+                    <div className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-300">Objective</div>
+                    <div className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-300">Subjective</div>
+                    <div className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-300">Hybrid</div>
+                 </div>
+
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                    <ArrowUpRight size={20} />
+                 </div>
               </motion.div>
 
-              {/* Feature 3 */}
-              <motion.div variants={item} className="bg-zinc-900 dark:bg-white p-8 rounded-3xl border border-zinc-900 md:col-span-2 text-white dark:text-black">
-                 <div className="flex items-center justify-between mb-8">
-                    <h3 className="text-2xl font-bold">Rapid Attendance UI</h3>
-                    <Zap size={24} />
+              {/* USP 2: QUESTION BANK (Span 1 - Dark Theme) */}
+              <motion.div variants={item} className="relative group bg-zinc-900 dark:bg-white p-8 rounded-3xl border border-zinc-900 dark:border-white text-white dark:text-black h-[340px] flex flex-col justify-between overflow-hidden">
+                 <Link href="/orbit/database" className="absolute inset-0 z-10" />
+
+                 <div>
+                    <div className="w-12 h-12 bg-zinc-800 dark:bg-zinc-100 rounded-2xl flex items-center justify-center mb-6">
+                        <Database size={20} />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">The Vault</h3>
+                    <p className="opacity-70 leading-relaxed text-sm">
+                       Access a centralized repository of 15,000+ tagged questions. Filter by difficulty, topic, and board year.
+                    </p>
                  </div>
-                 <p className="opacity-80 leading-relaxed max-w-md">
-                    We shaved milliseconds off every interaction. Teachers can mark attendance for an entire class in under 12 seconds. Design that respects your time.
-                 </p>
+
+                 <div className="text-center">
+                    <span className="text-5xl font-bold tracking-tighter">15k+</span>
+                    <span className="block text-xs uppercase tracking-widest opacity-50 mt-1">Questions Banked</span>
+                 </div>
+
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-800 dark:bg-zinc-200 flex items-center justify-center group-hover:bg-white group-hover:text-black dark:group-hover:bg-black dark:group-hover:text-white transition-all duration-300">
+                    <ArrowUpRight size={20} />
+                 </div>
               </motion.div>
 
-              {/* Feature 4 */}
-              <motion.div variants={item} className="bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-center items-center text-center">
-                 <div className="mb-4">
-                    <h4 className="text-4xl font-bold text-zinc-900 dark:text-white">10k+</h4>
-                    <span className="text-xs uppercase tracking-widest text-zinc-400">Questions Banked</span>
+              {/* USP 3: RAPID ATTENDANCE (Span 1 - White Theme) */}
+              <motion.div variants={item} className="relative group bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:border-blue-500/30 transition-colors h-[340px] flex flex-col justify-between overflow-hidden">
+                 <Link href="/orbit/attendance" className="absolute inset-0 z-10" />
+                 
+                 <div>
+                    <div className="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mb-6 text-green-600 dark:text-green-400">
+                        <Zap size={24} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Flash Attendance</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-sm">
+                        Mark an entire class in under 12 seconds. Smart pattern toggles mean you only tap the absentees.
+                    </p>
                  </div>
-                 <div className="w-full h-1 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500 w-3/4" />
+
+                 <div className="flex justify-center my-4">
+                    <motion.div 
+                        variants={flip}
+                        initial="initial"
+                        animate="animate"
+                        className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-500/30"
+                    >
+                        <Zap size={24} fill="currentColor" />
+                    </motion.div>
+                 </div>
+
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
+                    <ArrowUpRight size={20} />
+                 </div>
+              </motion.div>
+
+              {/* USP 4: AUTO TIMETABLE (Span 2 - Dark Theme) */}
+              <motion.div variants={item} className="relative md:col-span-2 group bg-zinc-900 dark:bg-white p-8 rounded-3xl border border-zinc-900 dark:border-white text-white dark:text-black h-[340px] flex flex-col justify-between overflow-hidden">
+                 <Link href="/orbit/timetable" className="absolute inset-0 z-10" />
+                 
+                 {/* Decorative Grid Background */}
+                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+
+                 <div className="relative z-10">
+                    <div className="w-12 h-12 bg-zinc-800 dark:bg-zinc-100 rounded-2xl flex items-center justify-center mb-6">
+                        <Calendar size={20} />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Neural Timetable</h3>
+                    <p className="opacity-70 leading-relaxed max-w-lg">
+                        Conflict-free scheduling in one click. Our constraint solver handles teacher availability, room capacity, and subject weightage automatically. Includes smart substitution for absent teachers.
+                    </p>
+                 </div>
+
+                 <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-zinc-800 dark:bg-zinc-200 flex items-center justify-center group-hover:bg-white group-hover:text-black dark:group-hover:bg-black dark:group-hover:text-white transition-all duration-300">
+                    <ArrowUpRight size={20} />
                  </div>
               </motion.div>
 
             </motion.div>
           </div>
 
-          {/* 3. TECH SPECS TOGGLE (The Nerd List - 12 Items) */}
+          {/* 3. NEW SECTION: ADMINISTRATIVE CORE */}
+          <div className="mb-24">
+            <h2 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-8 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+              Administrative Core
+            </h2>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={container}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            >
+                
+                {/* 1. Records */}
+                <motion.div variants={item} className="p-6 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+                    <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-purple-600 dark:text-purple-400">
+                        <FileText size={20} />
+                    </div>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Auto-Records</h4>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        Generates student transcripts, report cards, and character certificates instantly from stored data.
+                    </p>
+                </motion.div>
+
+                {/* 2. Fee Manager */}
+                <motion.div variants={item} className="p-6 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+                    <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-green-600 dark:text-green-400">
+                        <BarChart size={20} />
+                    </div>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Fee Manager</h4>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        Track tuition, send automated WhatsApp reminders to parents, and generate financial reports.
+                    </p>
+                </motion.div>
+
+                {/* 3. Library */}
+                <motion.div variants={item} className="p-6 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+                    <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400">
+                        <BookOpen size={20} />
+                    </div>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Digital Library</h4>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        Issue books, track returns, and manage fine calculations automatically.
+                    </p>
+                </motion.div>
+
+                {/* 4. Parent App */}
+                <motion.div variants={item} className="p-6 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+                    <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400">
+                        <Users size={20} />
+                    </div>
+                    <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">Parent Connect</h4>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        Real-time updates for parents on attendance, marks, and school announcements.
+                    </p>
+                </motion.div>
+
+            </motion.div>
+          </div>
+
+          {/* 4. TECH SPECS TOGGLE (Kept as requested) */}
           <div className="flex flex-col items-center mb-8">
              <button 
                 onClick={() => setShowSpecs(!showSpecs)}
@@ -218,13 +363,12 @@ export default function OrbitPage() {
                                 <p className="text-[10px] text-zinc-500 leading-tight">On-demand asset hydration.</p>
                             </div>
 
-                            {/* 6. Database (FIXED JSX ERROR HERE) */}
+                            {/* 6. Database */}
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2 text-zinc-400 text-xs uppercase tracking-wider font-bold">
                                     <Database size={14}/> Persistence
                                 </div>
                                 <div className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">Compound Indexing</div>
-                                {/* CHANGED: <50ms to &lt;50ms */}
                                 <p className="text-[10px] text-zinc-500 leading-tight">Optimized &lt;50ms query times.</p>
                             </div>
 
@@ -288,7 +432,7 @@ export default function OrbitPage() {
              </AnimatePresence>
           </div>
 
-          {/* 4. CTA (Refined) */}
+          {/* 4. CTA */}
           <div className="flex justify-center">
             <Link 
                 href="/contact"
