@@ -157,9 +157,9 @@ export default function Tree() {
               animate={{ opacity: 0.7, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
               transition={{ duration: 0.5 }}
-              className="font-sans text-sm font-normal text-zinc-400 dark:text-zinc-600 tracking-widest uppercase text-center"
+              className="font-sans text-sm font-normal text-zinc-500 dark:text-zinc-600 tracking-widest uppercase text-center"
             >
-              Try and shake the tree
+              Try tapping the tree
             </motion.p>
           )}
         </AnimatePresence>
