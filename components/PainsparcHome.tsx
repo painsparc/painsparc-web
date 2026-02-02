@@ -74,7 +74,7 @@ export default function PainsparcHome() {
             href="/contact" 
             className="text-sm font-medium text-zinc-500 hover:text-white transition-colors"
           >
-            Get in touch
+            📞
           </Link>
         </header>
 
