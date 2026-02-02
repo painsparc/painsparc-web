@@ -72,7 +72,7 @@ export default function PainsparcHome() {
           </div>
           <Link 
             href="/contact" 
-            className="text-sm font-medium text-zinc-600 hover:text-white transition-colors"
+            className="text-sm font-medium text-zinc-200 hover:text-white transition-colors"
           >
             Contact
           </Link>
