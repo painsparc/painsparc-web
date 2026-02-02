@@ -6,7 +6,7 @@ import Image from "next/image";
 import { 
   ArrowUpRight, ChevronDown, Terminal, Cpu, Globe, 
   Database, Layers, Smartphone, Wrench, Container, Server,
-  ArrowRight
+  ArrowRight, Filter
 } from "lucide-react";
 import { useRef } from "react";
 import Tree from "./Tree";
@@ -72,7 +72,7 @@ export default function PainsparcHome() {
           </div>
           <Link 
             href="/contact" 
-            className="text-sm font-medium text-zinc-500 hover:text-white transition-colors"
+            className="text-sm font-medium text-zinc-200 hover:text-white transition-colors"
           >
             Get in touch
           </Link>
@@ -282,6 +282,78 @@ export default function PainsparcHome() {
               </div>
             </Link>
           </motion.div>
+
+          {/* TILE 3: TOSS (NEURAL GREEN) */}
+          <motion.div
+            custom={2}
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="md:col-span-2"
+          >
+            <Link href="/toss" className="group relative w-full h-[400px] block overflow-hidden rounded-[2rem]">
+              {/* UPDATED BACKGROUND: Neural Emerald Gradient */}
+              <div className="w-full h-full bg-[#020502] border border-emerald-500/30 transition-all duration-500 relative group-hover:border-emerald-400/50">
+                
+                {/* 1. Deep Neural Gradient Base */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/40 via-green-950/20 to-black opacity-100" />
+                
+                {/* 2. Top-Right Toxic Green Glow (Lighting source) */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent opacity-60" />
+
+                {/* Gorgeous Button */}
+                <div className="absolute bottom-8 right-8 z-30 flex items-center gap-3 opacity-100 md:opacity-0 -translate-x-0 -translate-y-0 md:-translate-x-2 md:translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300">
+                    <div className="bg-white text-black px-6 py-3 rounded-full font-bold uppercase text-xs tracking-widest shadow-lg hover:bg-zinc-200 transition-colors">
+                        View Product
+                    </div>
+                </div>
+
+                <div className="absolute top-6 right-6 md:right-12 z-20 w-20 h-20 md:w-[120px] md:h-[120px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-emerald-500/20 bg-black/50 flex items-center justify-center backdrop-blur-sm">
+                    {/* Placeholder for TOSS Logo */}
+                    <div className="relative w-full h-full">
+                         <Image 
+                            src="/logos/toss.png" 
+                            alt="TOSS Logo" 
+                            fill 
+                            className="object-cover"
+                        />
+                    </div>
+                </div>
+                
+                <div className="absolute top-0 left-0 w-full h-full p-6 md:p-8 flex flex-col items-start z-10 pointer-events-none">
+                  <span className="block font-sans text-xs font-bold tracking-widest uppercase text-emerald-500 mb-2">
+                    System 03
+                  </span>
+                  
+                  <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">
+                    TOSS
+                  </h2>
+                  <p className="text-zinc-400 text-sm mt-2 max-w-[300px] font-medium leading-relaxed">
+                    Declutter your digital chaos at the speed of thought. <br/>
+                    The rapid-fire media curator.
+                  </p>
+
+                  <div className="flex flex-row flex-wrap gap-x-8 gap-y-3 mt-8 md:mt-10">
+                    <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-emerald-600 flex items-center gap-2">
+                      <Filter size={14} className="text-emerald-500" /> Rapid-Fire Sorting
+                    </div>
+                    <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-emerald-600 flex items-center gap-2">
+                      <Filter size={14} className="text-emerald-500" /> Intuitive Logic
+                    </div>
+                    <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-emerald-600 flex items-center gap-2">
+                      <Filter size={14} className="text-emerald-500" /> Offline Privacy
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute -bottom-10 -left-4 text-[12rem] font-bold text-emerald-500/5 leading-none select-none pointer-events-none group-hover:scale-105 transition-transform duration-700">
+                  03
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
         </div>
 
         {/* --- TESTIMONIALS BUTTON SECTION --- */}
