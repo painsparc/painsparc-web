@@ -163,7 +163,7 @@ export default function PainsparcHome() {
                 viewport={{ once: true, margin: "-50px" }}
                 className="text-4xl md:text-6xl font-bold text-white tracking-tighter"
             >
-                Workflow Systems we Built
+                Workflow Systems we Provide 
             </motion.h2>
         </div>
 
