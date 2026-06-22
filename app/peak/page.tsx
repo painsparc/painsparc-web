@@ -445,6 +445,7 @@ export default function PeakPage() {
           <div className="flex justify-center">
             <Link 
                 href="/contact"
+                
                 className="group flex items-center gap-4 text-xl font-bold text-white border-b-2 border-white pb-1 hover:text-zinc-300 hover:border-zinc-500 transition-all"
             >
                 Activate Peak Protocol <ArrowRight className="group-hover:translate-x-1 transition-transform" />

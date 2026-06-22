@@ -4,9 +4,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { 
-  ArrowUpRight, ChevronDown, Terminal, Cpu, Globe, 
-  Database, Layers, Smartphone, Wrench, Container, Server,
-  ArrowRight, Filter
+  ArrowUpRight, ChevronDown, ArrowRight, Filter
 } from "lucide-react";
 import { useRef } from "react";
 import Tree from "./Tree";
@@ -43,18 +41,6 @@ export default function PainsparcHome() {
       transition: { duration: 1, ease: "easeInOut" }
     }
   };
-
-  const stack = [
-    { name: "Next.js", icon: Globe, desc: "Web Core" },
-    { name: "Flutter", icon: Cpu, desc: "Cross-Platform" },
-    { name: "Kotlin", icon: Smartphone, desc: "Native Android" },
-    { name: "Gradle", icon: Wrench, desc: "Build Systems" },
-    { name: "Supabase", icon: Server, desc: "SQL Backend" },
-    { name: "Firebase", icon: Database, desc: "NoSQL Backend" },
-    { name: "Python", icon: Terminal, desc: "Logic & AI" },
-    { name: "Docker", icon: Container, desc: "Containerization" },
-    { name: "Tailwind", icon: Layers, desc: "System Design" },
-  ];
 
   return (
     <div 
@@ -293,16 +279,12 @@ export default function PainsparcHome() {
             className="md:col-span-2"
           >
             <Link href="/toss" className="group relative w-full h-[400px] block overflow-hidden rounded-[2rem]">
-              {/* UPDATED BACKGROUND: Neural Emerald Gradient */}
               <div className="w-full h-full bg-[#020502] border border-emerald-500/30 transition-all duration-500 relative group-hover:border-emerald-400/50">
                 
-                {/* 1. Deep Neural Gradient Base */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/40 via-green-950/20 to-black opacity-100" />
                 
-                {/* 2. Top-Right Toxic Green Glow (Lighting source) */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent opacity-60" />
 
-                {/* Gorgeous Button */}
                 <div className="absolute bottom-8 right-8 z-30 flex items-center gap-3 opacity-100 md:opacity-0 -translate-x-0 -translate-y-0 md:-translate-x-2 md:translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300">
                     <div className="bg-white text-black px-6 py-3 rounded-full font-bold uppercase text-xs tracking-widest shadow-lg hover:bg-zinc-200 transition-colors">
                         View Product
@@ -310,7 +292,6 @@ export default function PainsparcHome() {
                 </div>
 
                 <div className="absolute top-6 right-6 md:right-12 z-20 w-20 h-20 md:w-[120px] md:h-[120px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-emerald-500/20 bg-black/50 flex items-center justify-center backdrop-blur-sm">
-                    {/* Placeholder for TOSS Logo */}
                     <div className="relative w-full h-full">
                          <Image 
                             src="/logos/toss.png" 
@@ -439,53 +420,8 @@ export default function PainsparcHome() {
         </div>
       </section>
 
-      {/* 3. ARSENAL (Faint Tiles) */}
-      <section className="relative z-10 bg-black px-4 md:px-8 pb-32 pt-12">
-        <motion.div 
-            initial={{ opacity: 0 }} 
-            whileInView={{ opacity: 1 }} 
-            viewport={{ once: true }}
-            className="max-w-6xl mx-auto"
-        >
-          <div className="flex flex-col md:flex-row items-start justify-between border-t border-zinc-800 pt-12">
-            <div className="mb-10 md:mb-0 md:w-1/3">
-              <span className="block font-mono text-xs text-zinc-400 uppercase tracking-widest mb-3">The Arsenal</span>
-              <h3 className="text-3xl font-bold text-white tracking-tight">Technical <br/> Foundation</h3>
-            </div>
-
-            <div className="w-full md:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {stack.map((item, i) => (
-                <motion.div 
-                    key={i} 
-                    custom={i}
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-zinc-600 transition-colors duration-300 cursor-default group"
-                >
-                  <div className="flex flex-col gap-2">
-                    <div className="flex items-center justify-between">
-                        <item.icon size={20} className="text-zinc-500 group-hover:text-white transition-colors duration-300" />
-                    </div>
-                    <div>
-                        <span className="block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors duration-300">
-                            {item.name}
-                        </span>
-                        <span className="block text-[10px] font-mono text-zinc-600 uppercase tracking-wider mt-1">
-                            {item.desc}
-                        </span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
       {/* 4. ABOUT US SECTION - Vertical Left Hierarchy */}
-      <section className="relative z-10 bg-black px-4 md:px-8 pb-32">
+      <section className="relative z-10 bg-black px-4 md:px-8 pb-32 pt-12">
         <motion.div 
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
@@ -501,32 +437,75 @@ export default function PainsparcHome() {
           {/* Flexible People Grid - NOW CLEANER */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
             
-            {/* Person 01: You */}
-            <div className="flex flex-col items-start">
-              {/* Photo Below Title */}
-              <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-zinc-800 shadow-sm mb-6 bg-zinc-900">
-                <Image 
-                  src="/my-photo.png" 
-                  alt="Painsparc Founder" 
-                  fill 
-                  className="object-cover"
-                />
-              </div>
-              {/* Identity Details */}
-              <div className="space-y-1">
-                <h4 className="text-2xl font-bold text-white tracking-tighter">
-                  Pushkar Wagh
-                </h4>
-                <p className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest pb-4">
-                  Founder & Systems Architect
-                </p>
-                <p className="text-sm text-zinc-400 leading-relaxed max-w-[280px]">
-                  {/* Bio can go here if needed later */}
-                </p>
+            {/* Person 01: You & Certifications */}
+            <div className="col-span-1 sm:col-span-2 lg:col-span-3">
+              <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-center md:items-center w-full">
+                
+                {/* Identity & Photo Side */}
+                <div className="flex flex-col items-center md:items-start min-w-max w-full md:w-auto">
+                  <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border border-zinc-800 shadow-2xl mb-5 md:mb-6 bg-zinc-900">
+                    <Image 
+                      src="/my-photo.png" 
+                      alt="Painsparc Founder" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="space-y-1 text-center md:text-left">
+                    <h4 className="text-3xl md:text-4xl font-bold text-white tracking-tighter">
+                      Pushkar Wagh
+                    </h4>
+                    <p className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest mt-2">
+                      Founder & Systems Architect
+                    </p>
+                  </div>
+                </div>
+
+                {/* Premium Divider (Hidden on Mobile, Visible on Desktop) */}
+                <div className="hidden md:block w-[1px] h-40 bg-zinc-800"></div>
+
+                {/* Certifications Side */}
+                <div className="flex flex-col items-center md:items-start justify-center pt-2 md:pt-0 w-full">
+                  <span className="block font-mono text-xs text-zinc-500 uppercase tracking-widest mb-6 md:mb-8 text-center md:text-left">
+                    Certified By
+                  </span>
+                  
+                  {/* Glass Cards Grid */}
+                  <div className="grid grid-cols-2 lg:flex lg:flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 w-full max-w-sm md:max-w-none mx-auto md:mx-0">
+                    
+                    {/* Nvidia Card */}
+                    <div className="flex items-center justify-center h-24 md:h-32 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
+                        <div className="relative h-10 w-24 md:h-16 md:w-56 transition-transform duration-700 group-hover:scale-105">
+                           <Image src="/logos/nvidia.png" alt="Nvidia Certified" fill className="object-contain" />
+                        </div>
+                    </div>
+                    
+                    {/* IBM Card */}
+                    <div className="flex items-center justify-center h-24 md:h-32 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
+                        <div className="relative h-6 w-16 md:h-12 md:w-28 transition-transform duration-700 group-hover:scale-105">
+                           <Image src="/logos/ibm.png" alt="IBM Certified" fill className="object-contain" />
+                        </div>
+                    </div>
+                    
+                    {/* Microsoft Card */}
+                    <div className="flex items-center justify-center h-24 md:h-32 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
+                        <div className="relative h-10 w-24 md:h-16 md:w-48 transition-transform duration-700 group-hover:scale-105">
+                           <Image src="/logos/microsoft.png" alt="Microsoft Certified" fill className="object-contain" />
+                        </div>
+                    </div>
+                    
+                    {/* Cisco Card */}
+                    <div className="flex items-center justify-center h-24 md:h-32 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
+                        <div className="relative h-8 w-20 md:h-14 md:w-40 transition-transform duration-700 group-hover:scale-105">
+                           <Image src="/logos/cisco.png" alt="Cisco Certified" fill className="object-contain" />
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
             </div>
-
-            {/* Removed System_02 as requested */}
 
           </div>
         </motion.div>
