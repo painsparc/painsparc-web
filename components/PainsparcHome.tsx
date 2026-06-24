@@ -79,8 +79,8 @@ export default function PainsparcHome() {
             <div className="relative z-10 pt-20 pb-10 md:py-0 md:absolute md:top-0 md:left-0 md:h-full flex flex-col justify-center max-w-6xl pointer-events-none">
                 <motion.div style={{ y: textY, opacity }} className="pointer-events-auto text-left">
                     <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold text-zinc-100 tracking-tighter leading-[1.1] mb-8">
-                    Precision <br/>
-                    <span className="text-zinc-500">with Persistence</span>
+                    Precision with <br/>
+                    <span className="text-zinc-500">Persistence</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-zinc-400 max-w-xl leading-relaxed mb-8 md:mb-0">
                     The things are built the way they're supposed to be, durable, scalable and perhaps, gorgeous.
