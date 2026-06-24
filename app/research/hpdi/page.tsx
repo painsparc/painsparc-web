@@ -140,13 +140,12 @@ export default function HPDIPage() {
           </div>
           <div>
             <span className="block text-zinc-600 mb-2">Author</span>
-            <span className="text-zinc-300">Painsparc Research</span>
+            <span className="text-zinc-300">Pushkar Wagh</span>
           </div>
           <div className="col-span-2 md:col-span-4 mt-4 bg-zinc-900 p-4 rounded-lg break-all">
             <span className="block text-zinc-600 mb-2">SHA-256 Checksum</span>
-            <span className="text-zinc-400">
-              {/* Replace this string with the actual hash of your PDF once generated */}
-              2F5A9B8C7D6E5F4A3B2C1D0E9F8A7B6C5D4E3F2A1B0C9D8E7F6A5B4C3D2E1F0
+            <span className="text-zinc-400 font-bold">
+              aff60be07fd9a09df39efc5d938deb8e04829e72280287db7270e114fa596fd0
             </span>
           </div>
         </motion.div>
