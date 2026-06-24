@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { 
-  ArrowUpRight, ChevronDown, ArrowRight, Filter
+  ArrowUpRight, ChevronDown, ArrowRight
 } from "lucide-react";
 import { useRef } from "react";
 import Tree from "./Tree";
@@ -51,17 +51,25 @@ export default function PainsparcHome() {
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[90vh] md:h-[90vh] flex flex-col px-4 md:px-8">
         
-        {/* Header */}
+        {/* --- UPDATED HEADER WITH RESEARCH LINK --- */}
         <header className="flex justify-between items-center py-6 relative z-30">
           <div className="text-3xl text-white font-header pt-2 select-none">
             Painsparc's
           </div>
-          <Link 
-            href="/contact" 
-            className="text-sm font-medium text-zinc-200 hover:text-white transition-colors"
-          >
-            Contact
-          </Link>
+          <div className="flex items-center gap-6 md:gap-8">
+            <Link 
+              href="/research" 
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+            >
+              Research
+            </Link>
+            <Link 
+              href="/contact" 
+              className="text-sm font-medium text-zinc-200 hover:text-white transition-colors"
+            >
+              Contact
+            </Link>
+          </div>
         </header>
 
         {/* --- HERO CONTENT WRAPPER --- */}
@@ -78,7 +86,7 @@ export default function PainsparcHome() {
                     The things are built the way they're supposed to be, durable, scalable and perhaps, gorgeous.
                     </p>
 
-                    {/* MOBILE SCROLL INDICATOR (Relative, below text) */}
+                    {/* MOBILE SCROLL INDICATOR */}
                     <motion.div 
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -107,7 +115,7 @@ export default function PainsparcHome() {
 
         </div>
 
-        {/* DESKTOP SCROLL INDICATOR (Absolute, bottom left) */}
+        {/* DESKTOP SCROLL INDICATOR */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -140,7 +148,6 @@ export default function PainsparcHome() {
           className="w-full h-[1px] bg-zinc-800 mb-20" 
         />
         
-        {/* ADDED HEADING: Centered & Premium Spacing */}
         <div className="max-w-6xl mx-auto mb-24 text-center">
             <motion.h2 
                 variants={fadeInUp}
@@ -149,7 +156,7 @@ export default function PainsparcHome() {
                 viewport={{ once: true, margin: "-50px" }}
                 className="text-4xl md:text-6xl font-bold text-white tracking-tighter"
             >
-                Workflow Systems we Provide 
+                Workflow Systems we Built
             </motion.h2>
         </div>
 
@@ -269,8 +276,6 @@ export default function PainsparcHome() {
             </Link>
           </motion.div>
 
-          
-
         </div>
 
         {/* --- TESTIMONIALS BUTTON SECTION --- */}
@@ -370,7 +375,7 @@ export default function PainsparcHome() {
             <h3 className="text-3xl font-bold text-white tracking-tight">The Architects</h3>
           </div>
 
-          {/* Flexible People Grid - NOW CLEANER */}
+          {/* Flexible People Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
             
             {/* Person 01: You & Certifications */}
