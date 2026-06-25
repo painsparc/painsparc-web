@@ -270,6 +270,7 @@ export default function AwakeCanvas() {
     setSessionState('FINISHED');
     cancelAnimationFrame(animationFrameId.current);
     
+    // Automated Objective QC Calculation
     let qcFlag = null;
     const screEvents = eventsRef.current.filter(e => e.event_type === 'scre');
     const rapidRepeats = screEvents.filter(e => e.metadata.rapid_repeat).length;
@@ -279,19 +280,48 @@ export default function AwakeCanvas() {
     else if (totalFocusBleedMsRef.current > (TOTAL_TRAINING_MS * 0.05)) qcFlag = 'QC_FOCUS_BLEED';
     else if (screEvents.length > 5 && (rapidRepeats / screEvents.length) > 0.15) qcFlag = 'QC_SPAM';
 
-    await supabase.from('awake_sessions').update({
-      duration_ms: Math.floor(activeTimeMsRef.current),
-      status: 'training_completed',
-      qc_flag: qcFlag,
-      completed_at: new Date().toISOString()
-    }).eq('session_id', sessionIdRef.current);
+    try {
+      // 1. Update Session Ledger
+      const { error: sessionError } = await supabase.from('awake_sessions').update({
+        duration_ms: Math.floor(activeTimeMsRef.current),
+        status: 'training_completed',
+        qc_flag: qcFlag,
+        completed_at: new Date().toISOString()
+      }).eq('session_id', sessionIdRef.current);
 
-    if (eventsRef.current.length > 0) {
-      await supabase.from('awake_events').insert(
-        eventsRef.current.map(e => ({ ...e, session_id: sessionIdRef.current }))
-      );
+      if (sessionError) console.error("Database Error (Session Update):", sessionError.message);
+
+      // 2. Batch Insert Events (This is where your focus_loss is saved)
+      if (eventsRef.current.length > 0) {
+        const { error: eventsError } = await supabase.from('awake_events').insert(
+          eventsRef.current.map(e => ({
+            ...e,
+            session_id: sessionIdRef.current
+          }))
+        );
+        if (eventsError) console.error("Database Error (Events Insert):", eventsError.message);
+      }
+
+      // 3. Update Participant Longitudinal State (Replaced broken RPC call)
+      if (ctxRef.current?.participantId) {
+        const { data: participant } = await supabase
+          .from('awake_participants')
+          .select('total_sessions_completed')
+          .eq('participant_id', ctxRef.current.participantId)
+          .single();
+
+        if (participant) {
+          await supabase.from('awake_participants').update({
+            total_sessions_completed: participant.total_sessions_completed + 1,
+            last_session_date: new Date().toISOString()
+          }).eq('participant_id', ctxRef.current.participantId);
+        }
+      }
+    } catch (err) {
+      console.error("Critical Save Failure:", err);
     }
 
+    // Pass Parent ID to Transfer module
     localStorage.setItem("awake_parent_session", sessionIdRef.current);
   };
 
