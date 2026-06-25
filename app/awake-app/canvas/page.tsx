@@ -16,6 +16,7 @@ export interface SessionContext {
 
 export interface AwakeEvent {
   event_id: string;
+  session_id: string;   // <--- Add this line
   event_type: string;
   cycle_number: number | null;
   phase_type: string;
