@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight, Download, Activity, Beaker } from "lucide-react";
 
@@ -25,13 +26,21 @@ export default function AWAKEPage() {
             Activation-Assisted Wakefulness and Awareness through Knowledge of Emergent Drift.
           </p>
           
-          <a 
-            href="/research/awake-protocol-v1.0.pdf" 
-            target="_blank"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 transition-transform"
-          >
-            Download Protocol PDF <Download size={16} />
-          </a>
+          <div className="flex flex-wrap items-center gap-4">
+            <a 
+              href="/research/awake-protocol-v1.0.pdf" 
+              target="_blank"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white border border-zinc-700 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-zinc-800 transition-colors"
+            >
+              Download Protocol PDF <Download size={16} />
+            </a>
+            <Link 
+              href="/awake-app" 
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 transition-transform"
+            >
+              Launch Experiment Engine <ArrowRight size={16} />
+            </Link>
+          </div>
         </motion.div>
 
         {/* 2. The Core Cognitive Cycle */}
