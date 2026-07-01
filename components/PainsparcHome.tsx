@@ -296,71 +296,52 @@ export default function PainsparcHome() {
         </motion.div>
       </div>
 
-      {/* --- NEW SECTION: PHILOSOPHY / WHAT WE DO --- */}
-      <section className="relative z-10 bg-black py-24 md:py-32 px-4 md:px-8 border-b border-zinc-900/50">
-        <div className="max-w-4xl mx-auto text-center">
-            
-            <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-                custom={0}
-            >
-                <span className="block font-mono text-xs text-zinc-400 uppercase tracking-widest mb-6">
-                    Our Approach
-                </span>
-            </motion.div>
+      
 
-            <motion.h2 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-                custom={1}
-                className="flex flex-col gap-2 font-bold tracking-tighter mb-8 leading-tight"
-            >
-                <span className="text-4xl md:text-6xl text-zinc-100">
-                   That what we do
-                </span>
-                <span className="text-4xl md:text-6xl text-zinc-500">
-                   makes you do less.
-                </span>
-            </motion.h2>
+      {/* Our Users / Trusted By Section */}
+<section className="w-full py-32 flex flex-col items-center justify-center bg-black">
+  <div className="max-w-5xl w-full px-6 flex flex-col items-center">
+    
+    <h3 className="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-24 text-center">
+      Our Users
+    </h3>
+    
+    {/* Stripped the grayscale and opacity. Added tight, uniform layout. */}
+    <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 w-full">
+      
+      
 
-            <motion.p 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-                custom={2}
-                className="text-lg md:text-xl text-zinc-400 leading-relaxed mb-12 max-w-2xl mx-auto"
-            >
-                We architect intelligent software systems designed to absorb complexity. 
-                By automating the mundane and streamlining critical operations, 
-                our solutions act as a silent engine for your business—allowing you 
-                to step back from the noise and focus entirely on growth and strategy.
-            </motion.p>
+      {/* Takalkar Logo */}
+      <div className="bg-white rounded-2xl h-24 md:h-28 w-48 flex items-center justify-center p-0 hover:-translate-y-2 transition-transform duration-300 ease-out">
+        <img 
+          src="/logos/takalkar.png" 
+          alt="Takalkar Logo" 
+          className="h-full w-full object-contain"
+        />
+      </div>
 
-            <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-                custom={3}
-            >
-                <Link 
-                    href="/about" 
-                    className="group inline-flex items-center gap-2 px-8 py-3 rounded-full border border-zinc-700 hover:border-white text-white text-xs font-bold uppercase tracking-widest transition-all hover:bg-zinc-900"
-                >
-                    Know More
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-            </motion.div>
+      {/* Symbiosis Logo - Made slightly wider to accommodate the horizontal text */}
+      <div className="bg-white rounded-2xl h-24 md:h-28 w-64 flex items-center justify-center p-6 hover:-translate-y-2 transition-transform duration-300 ease-out">
+        <img 
+          src="/logos/symbiosis.png" 
+          alt="Symbiosis Logo" 
+          className="h-full w-full object-contain"
+        />
+      </div>
 
-        </div>
-      </section>
+      {/* Grantham Logo */}
+      <div className="bg-white rounded-2xl h-24 md:h-28 w-48 flex items-center justify-center p-0 overflow-hidden hover:-translate-y-2 transition-transform duration-300 ease-out">
+        <img 
+          src="/logos/grantham.png" 
+          alt="Grantham Logo" 
+          className="h-full w-full object-contain scale-127"
+        />
+      </div>
 
+    </div>
+  </div>
+</section>
+      
       {/* 4. ABOUT US SECTION - Vertical Left Hierarchy */}
       <section className="relative z-10 bg-black px-4 md:px-8 pb-32 pt-12">
         <motion.div 
@@ -451,6 +432,75 @@ export default function PainsparcHome() {
           </div>
         </motion.div>
       </section>
+
+
+      {/* --- NEW SECTION: PHILOSOPHY / WHAT WE DO --- */}
+      <section className="relative z-10 bg-black py-24 md:py-32 px-4 md:px-8 border-b border-zinc-900/50">
+        <div className="max-w-4xl mx-auto text-center">
+            
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+                custom={0}
+            >
+                <span className="block font-mono text-xs text-zinc-400 uppercase tracking-widest mb-6">
+                    Our Approach
+                </span>
+            </motion.div>
+
+            <motion.h2 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+                custom={1}
+                className="flex flex-col gap-2 font-bold tracking-tighter mb-8 leading-tight"
+            >
+                <span className="text-4xl md:text-6xl text-zinc-100">
+                   That what we do
+                </span>
+                <span className="text-4xl md:text-6xl text-zinc-500">
+                   makes you do less.
+                </span>
+            </motion.h2>
+
+            <motion.p 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+                custom={2}
+                className="text-lg md:text-xl text-zinc-400 leading-relaxed mb-12 max-w-2xl mx-auto"
+            >
+                We architect intelligent software systems designed to absorb complexity. 
+                By automating the mundane and streamlining critical operations, 
+                our solutions act as a silent engine for your business—allowing you 
+                to step back from the noise and focus entirely on growth and strategy.
+            </motion.p>
+
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+                custom={3}
+            >
+                <Link 
+                    href="/about" 
+                    className="group inline-flex items-center gap-2 px-8 py-3 rounded-full border border-zinc-700 hover:border-white text-white text-xs font-bold uppercase tracking-widest transition-all hover:bg-zinc-900"
+                >
+                    Know More
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+            </motion.div>
+
+        </div>
+      </section>
+
+
+      
 
       {/* 5. FOOTER */}
       <footer className="relative z-10 bg-zinc-900 pt-20 pb-40 px-4 md:px-8 border-t border-zinc-800">
