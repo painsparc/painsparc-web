@@ -302,7 +302,7 @@ export default function PainsparcHome() {
 <section className="w-full py-32 flex flex-col items-center justify-center bg-black">
   <div className="max-w-5xl w-full px-6 flex flex-col items-center">
     
-    <h3 className="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-24 text-center">
+    <h3 className="text-zinc-300 text-xl font-bold uppercase tracking-normal mb-24 text-center">
       Our Users
     </h3>
     
