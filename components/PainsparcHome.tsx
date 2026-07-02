@@ -393,37 +393,42 @@ export default function PainsparcHome() {
                   </span>
                   
                   {/* Glass Cards Grid */}
-                  <div className="grid grid-cols-2 lg:flex lg:flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 w-full max-w-sm md:max-w-none mx-auto md:mx-0">
-                    
-                    {/* Nvidia Card */}
-                    <div className="flex items-center justify-center h-24 md:h-32 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
-                        <div className="relative h-10 w-24 md:h-16 md:w-56 transition-transform duration-700 group-hover:scale-105">
-                           <Image src="/logos/nvidia.png" alt="Nvidia Certified" fill className="object-contain" />
-                        </div>
-                    </div>
-                    
-                    {/* IBM Card */}
-                    <div className="flex items-center justify-center h-24 md:h-32 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
-                        <div className="relative h-6 w-16 md:h-12 md:w-28 transition-transform duration-700 group-hover:scale-105">
-                           <Image src="/logos/ibm.png" alt="IBM Certified" fill className="object-contain" />
-                        </div>
-                    </div>
-                    
-                    {/* Microsoft Card */}
-                    <div className="flex items-center justify-center h-24 md:h-32 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
-                        <div className="relative h-10 w-24 md:h-16 md:w-48 transition-transform duration-700 group-hover:scale-105">
+<div className="grid grid-cols-2 lg:flex lg:flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 w-full max-w-sm md:max-w-none mx-auto md:mx-0">
+  
+  {/* Nvidia Card */}
+<div className="flex items-center justify-center h-28 md:h-36 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
+    {/* BIGGER: Bumped to h-16 w-40 (mobile) and h-24 w-72 (desktop) */}
+    <div className="relative h-16 w-40 md:h-24 md:w-72 transition-transform duration-700 group-hover:scale-105">
+       <Image src="/logos/nvidia.png" alt="Nvidia Certified" fill className="object-contain" />
+    </div>
+</div>
+
+  
+  {/* IBM Card */}
+  <div className="flex items-center justify-center h-28 md:h-36 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
+      {/* INCREASED: h-10 w-24 for mobile, h-16 w-40 for desktop */}
+      <div className="relative h-10 w-24 md:h-16 md:w-40 transition-transform duration-700 group-hover:scale-105">
+         <Image src="/logos/ibm.png" alt="IBM Certified" fill className="object-contain" />
+      </div>
+  </div>
+  
+  {/* Microsoft Card */}
+  <div className="flex items-center justify-center h-28 md:h-36 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
+                        {/* INCREASED: Bumped to h-16 w-40 (mobile) and h-24 w-64 (desktop) */}
+                        <div className="relative h-16 w-40 md:h-24 md:w-64 transition-transform duration-700 group-hover:scale-105">
                            <Image src="/logos/microsoft.png" alt="Microsoft Certified" fill className="object-contain" />
                         </div>
                     </div>
                     
                     {/* Cisco Card */}
-                    <div className="flex items-center justify-center h-24 md:h-32 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
-                        <div className="relative h-8 w-20 md:h-14 md:w-40 transition-transform duration-700 group-hover:scale-105">
+                    <div className="flex items-center justify-center h-28 md:h-36 px-4 md:px-10 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800 hover:bg-zinc-800/50 hover:border-zinc-600 transition-all duration-500 group">
+                        {/* MUCH BIGGER: Bumped to h-20 w-48 (mobile) and h-28 w-72 (desktop) */}
+                        <div className="relative h-20 w-48 md:h-28 md:w-72 transition-transform duration-700 group-hover:scale-105">
                            <Image src="/logos/cisco.png" alt="Cisco Certified" fill className="object-contain" />
                         </div>
                     </div>
 
-                  </div>
+</div>
                 </div>
 
               </div>
