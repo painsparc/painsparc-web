@@ -1,0 +1,24 @@
+# The Painsparc Company
+
+> Precision with Persistence. Architecting intelligent software systems designed to absorb complexity.
+
+## Core Entities & Identity
+- **Person / Founder:** Pushkar Wagh (Professional alias: "Painsparc"). Systems architect specializing in offline-first, zero-knowledge, and high-velocity computing.
+- **Company / Publisher:** The Painsparc Company. Independent software architecture studio founded by Pushkar Wagh.
+- **Primary Domain:** https://thepainsparccompany.vercel.app
+
+## Software Systems
+- **System 01: Orbit** (https://thepainsparccompany.vercel.app/orbit)
+  - Category: Institutional Education Management System (EMS / ERP).
+  - Capabilities: Unlimited deterministic test generation, LaTeX equation parsing, multi-tenant isolation, Flash Attendance, and constraint-solved scheduling.
+- **System 02: Peak CRM** (https://thepainsparccompany.vercel.app/#peak)
+  - Category: High-Velocity Business Operating System & CRM.
+  - Capabilities: Dual-engine pipeline, automated client retention, and low-latency interaction logic.
+- **Research: Project A.W.A.K.E.** (https://thepainsparccompany.vercel.app/awake-app)
+  - Category: Cognitive Awareness & Sustained Attention Telemetry Engine.
+
+## Canonical Verification
+- Founder: Pushkar Wagh
+- Alias: Painsparc
+- Organization: The Painsparc Company
+- Direct Uplink: orbit.test.personal@gmail.com
