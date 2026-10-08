@@ -115,7 +115,7 @@ export default function Contact() {
                         <span className="text-xs font-mono uppercase tracking-wider">Primary Uplink</span>
                       </div>
                       <div className="text-2xl md:text-3xl font-bold text-white dark:text-black tracking-tight">
-                        orbit.test.personal@gmail.com
+                        thepainsparccompany@gmail.com
                       </div>
                     </div>
                     <div className="bg-zinc-800 dark:bg-zinc-200 p-3 rounded-full text-white dark:text-black">
@@ -158,7 +158,7 @@ export default function Contact() {
                     <Instagram size={24} className="text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
                     <ArrowUpRight size={20} className="text-zinc-300 group-hover:text-black dark:group-hover:text-white transition-colors" />
                   </div>
-                  <span className="text-lg font-bold text-zinc-900 dark:text-white">Instagram</span>
+                  <span className="text-lg font-bold text-zinc-900 dark:text-white">Instagram (Personal)</span>
                 </a>
               </motion.div>
 
