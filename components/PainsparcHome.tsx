@@ -513,7 +513,7 @@ export default function PainsparcHome() {
           
           <div className="text-left">
             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8 max-w-2xl leading-tight">
-              Oh well, let us impress you. <br/>
+              Let us impress you. <br/>
               Ready to initiate?
             </h2>
             <Link 
