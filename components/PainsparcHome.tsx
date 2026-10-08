@@ -520,7 +520,7 @@ export default function PainsparcHome() {
               href="/contact" 
               className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-lg font-medium border-b border-zinc-700 pb-1"
             >
-              orbit.test.personal@gmail.com <ArrowUpRight size={18} />
+              thepainsparccompany@gmail.com<ArrowUpRight size={18} />
             </Link>
           </div>
 
